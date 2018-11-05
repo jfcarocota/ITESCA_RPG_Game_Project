@@ -1,0 +1,246 @@
+fileFormatVersion: 2
+guid: d51f52304ce23c740a43410619e7d875
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: b_abdomen
+    100002: b_bust
+    100004: b_chest
+    100006: b_endhead
+    100008: b_head
+    100010: b_l_arm
+    100012: b_l_foot
+    100014: b_l_hand
+    100016: b_l_leg
+    100018: b_l_shoulder
+    100020: b_l_thigh
+    100022: b_l_tiptoe
+    100024: b_l_wrist
+    100026: b_neck
+    100028: b_pelvis
+    100030: b_r_arm
+    100032: b_r_foot
+    100034: b_r_hand
+    100036: b_r_leg
+    100038: b_r_shoulder
+    100040: b_r_thigh
+    100042: b_r_tiptoe
+    100044: b_r_wrist
+    100046: baston
+    100048: c_abdomen
+    100050: c_all
+    100052: c_chest
+    100054: c_head
+    100056: c_l_ankle
+    100058: c_l_arm
+    100060: c_l_elbow
+    100062: c_l_foot
+    100064: c_l_shoulder
+    100066: c_l_thigh
+    100068: c_neck
+    100070: c_neck2
+    100072: c_pelvis
+    100074: c_point_bust
+    100076: c_r_ankle
+    100078: c_r_arm
+    100080: c_r_elbow
+    100082: c_r_foot
+    100084: c_r_shoulder
+    100086: c_r_thigh
+    100088: c_rotate_bust
+    100090: c_spine
+    100092: //RootNode
+    100094: ik_head
+    100096: ik_l_arm
+    100098: ik_l_leg
+    100100: ik_r_arm
+    100102: ik_r_leg
+    100104: ik_spine
+    100106: left1
+    100108: mona3
+    100110: mona_con_baston
+    100112: right1
+    100114: transform13
+    100116: transform14
+    400000: b_abdomen
+    400002: b_bust
+    400004: b_chest
+    400006: b_endhead
+    400008: b_head
+    400010: b_l_arm
+    400012: b_l_foot
+    400014: b_l_hand
+    400016: b_l_leg
+    400018: b_l_shoulder
+    400020: b_l_thigh
+    400022: b_l_tiptoe
+    400024: b_l_wrist
+    400026: b_neck
+    400028: b_pelvis
+    400030: b_r_arm
+    400032: b_r_foot
+    400034: b_r_hand
+    400036: b_r_leg
+    400038: b_r_shoulder
+    400040: b_r_thigh
+    400042: b_r_tiptoe
+    400044: b_r_wrist
+    400046: baston
+    400048: c_abdomen
+    400050: c_all
+    400052: c_chest
+    400054: c_head
+    400056: c_l_ankle
+    400058: c_l_arm
+    400060: c_l_elbow
+    400062: c_l_foot
+    400064: c_l_shoulder
+    400066: c_l_thigh
+    400068: c_neck
+    400070: c_neck2
+    400072: c_pelvis
+    400074: c_point_bust
+    400076: c_r_ankle
+    400078: c_r_arm
+    400080: c_r_elbow
+    400082: c_r_foot
+    400084: c_r_shoulder
+    400086: c_r_thigh
+    400088: c_rotate_bust
+    400090: c_spine
+    400092: //RootNode
+    400094: ik_head
+    400096: ik_l_arm
+    400098: ik_l_leg
+    400100: ik_r_arm
+    400102: ik_r_leg
+    400104: ik_spine
+    400106: left1
+    400108: mona3
+    400110: mona_con_baston
+    400112: right1
+    400114: transform13
+    400116: transform14
+    2000000: left1
+    2000002: right1
+    2100000: oro
+    2100002: gema
+    2100004: botas
+    2100006: cloath
+    2100008: piel
+    2100010: ropa
+    4300000: mona_con_baston
+    7400000: Idle
+    9500000: //RootNode
+    13700000: mona_con_baston
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
