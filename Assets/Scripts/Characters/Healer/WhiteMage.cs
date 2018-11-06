@@ -10,7 +10,6 @@ public class WhiteMage : Character3D {
     protected HealArea healArea;
     [SerializeField,Range(0,50)]
     protected int healManaCost;
-    [SerializeField]
     protected Animator anim;
     protected ParticleSystem particles;
 
@@ -20,11 +19,11 @@ public class WhiteMage : Character3D {
         base.Start();
         RefreshHealth(-50f);
         particles = GetComponent<ParticleSystem>();
+        anim = GetComponent<Animator>();
     }
 
     protected override void Attack()
     {
-        print(rb.velocity);
         if (Controllers.GetButton(1, "A", 1) && RefreshMana(-healManaCost))
         {
             healArea.effectArea.enabled = true;
@@ -33,10 +32,12 @@ public class WhiteMage : Character3D {
             anim.SetTrigger("Cast");
             particles.Play();
         }
+        /*
         else if(Controllers.GetButton(1, "A", 1) && !RefreshMana(-healManaCost))
         {
             //hacer algo si no hay mana??
         }
+        */
     }
     protected override void Move()
     {

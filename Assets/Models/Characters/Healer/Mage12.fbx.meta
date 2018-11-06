@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df6cf08eb2b2a504ba3e5491ad36a6aa
+guid: 0c1a3bb64b4f78a49989794de8f1d7fb
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -69,31 +69,31 @@ ModelImporter:
     100126: KneeR
     100128: LBigShus2
     100130: Mage
-    100132: Neck
-    100134: Origin
-    100136: polySurface7
-    100138: polySurface8
-    100140: Shoulder
-    100142: Shoulder 1
-    100144: Staff
-    100146: Thumb1L
-    100148: Thumb1R
-    100150: Thumb2L
-    100152: Thumb2R
-    100154: Thumb3L
-    100156: Thumb3R
-    100158: ToesL
-    100160: ToesR
-    100162: topKHead
-    100164: Torso
-    100166: transform1
-    100168: transform2
-    100170: transform3
-    100172: transform4
-    100174: transform5
-    100176: transform6
-    100178: transform7
-    100180: //RootNode
+    100132: //RootNode
+    100134: Neck
+    100136: Origin
+    100138: polySurface7
+    100140: polySurface8
+    100142: Shoulder
+    100144: Shoulder 1
+    100146: Staff
+    100148: Thumb1L
+    100150: Thumb1R
+    100152: Thumb2L
+    100154: Thumb2R
+    100156: Thumb3L
+    100158: Thumb3R
+    100160: ToesL
+    100162: ToesR
+    100164: topKHead
+    100166: Torso
+    100168: transform1
+    100170: transform2
+    100172: transform3
+    100174: transform4
+    100176: transform5
+    100178: transform6
+    100180: transform7
     100182: wristL
     100184: wristR
     400000: AnckleL
@@ -162,31 +162,31 @@ ModelImporter:
     400126: KneeR
     400128: LBigShus2
     400130: Mage
-    400132: Neck
-    400134: Origin
-    400136: polySurface7
-    400138: polySurface8
-    400140: Shoulder
-    400142: Shoulder 1
-    400144: Staff
-    400146: Thumb1L
-    400148: Thumb1R
-    400150: Thumb2L
-    400152: Thumb2R
-    400154: Thumb3L
-    400156: Thumb3R
-    400158: ToesL
-    400160: ToesR
-    400162: topKHead
-    400164: Torso
-    400166: transform1
-    400168: transform2
-    400170: transform3
-    400172: transform4
-    400174: transform5
-    400176: transform6
-    400178: transform7
-    400180: //RootNode
+    400132: //RootNode
+    400134: Neck
+    400136: Origin
+    400138: polySurface7
+    400140: polySurface8
+    400142: Shoulder
+    400144: Shoulder 1
+    400146: Staff
+    400148: Thumb1L
+    400150: Thumb1R
+    400152: Thumb2L
+    400154: Thumb2R
+    400156: Thumb3L
+    400158: Thumb3R
+    400160: ToesL
+    400162: ToesR
+    400164: topKHead
+    400166: Torso
+    400168: transform1
+    400170: transform2
+    400172: transform3
+    400174: transform4
+    400176: transform5
+    400178: transform6
+    400180: transform7
     400182: wristL
     400184: wristR
     2100000: ShoesM
@@ -199,7 +199,6 @@ ModelImporter:
     3300000: Staff
     4300000: Mage
     4300002: Staff
-    7400000: WalkCast
     9500000: //RootNode
     13700000: Mage
   externalObjects: {}
@@ -229,35 +228,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: WalkCast
-      takeName: WalkCast
-      firstFrame: 118
-      lastFrame: 161
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
