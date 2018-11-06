@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
 using GameCore.ObjectPooler;
+using GameCore.SystemMovements;
 
 public class DamageMage : Character3D {
     
@@ -23,12 +24,14 @@ public class DamageMage : Character3D {
 
     override protected void Move() {
         base.Move();
-        if (Mathf.Abs(Controllers.GetJoystick(1, 1).x) > 0) {
+        /*if (Mathf.Abs(Controllers.GetJoystick(1, 1).x) > 0) {
             anim.SetFloat("Velocity", 1);
         }
         else {
             anim.SetFloat("Velocity", Mathf.Abs(rb.velocity.x + rb.velocity.z));
-        }
+        }*/
+
+        anim.SetFloat("Velocity", Mathf.Abs(Movement.Axis.magnitude));
     }
 
     protected override void Attack() {

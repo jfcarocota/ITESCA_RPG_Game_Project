@@ -4,6 +4,7 @@ using UnityEngine;
 using GameCore.SystemMovements;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Animator))]
 public abstract class Character3D : MonoBehaviour {
 
     protected float healthValue;
@@ -30,6 +31,13 @@ public abstract class Character3D : MonoBehaviour {
     [SerializeField]
     GameObject deadText;
 
+    protected Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     // Use this for initialization
     protected virtual void Start () {
         rb = GetComponent<Rigidbody>();
@@ -47,7 +55,7 @@ public abstract class Character3D : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
         Move();
         Rotate();
         Attack();

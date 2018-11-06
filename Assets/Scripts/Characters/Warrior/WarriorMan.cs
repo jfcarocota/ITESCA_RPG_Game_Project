@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
+using GameCore.SystemMovements;
 
 public class WarriorMan : Character3D
 {
@@ -29,25 +30,12 @@ public class WarriorMan : Character3D
         
     }
 
-
-     void Update()
-    {
-        
-        Move();
-        Rotate();
-        Attack();
-        Guard();
-      //  CheckPlayerStatus();
-
-    }
     protected override void Attack()
     {
         base.Attack();
         checkAnimation = GetComponent<Animator>().GetComponent<Animation>();
 
-        Animator animator = GetComponent<Animator>();
-
-
+        //Animator animator = GetComponent<Animator>();
 
         AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
         if (animStateInfo.IsName("Attack") || animStateInfo.IsName("Walk and Attack") || animStateInfo.IsName("Shield and Attack"))
@@ -65,10 +53,6 @@ public class WarriorMan : Character3D
                     timeAttack = 0;
                 }
             }
-
-
-
-
         }
         
         
@@ -86,7 +70,7 @@ public class WarriorMan : Character3D
     protected override void Move()
     {
         base.Move();
-        anim.SetFloat("Velocity", Mathf.Abs(rb.velocity.x  +rb.velocity.y));
+        anim.SetFloat("Velocity", Mathf.Abs(Movement.Axis.magnitude));
         
     }
 

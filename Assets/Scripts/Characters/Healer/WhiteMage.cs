@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
+using GameCore.SystemMovements;
 
 public class WhiteMage : Character3D {
 
@@ -39,15 +40,16 @@ public class WhiteMage : Character3D {
     }
     protected override void Move()
     {
-        if(Controllers.GetJoystick(1,1).y != 0)
+        /*if(Controllers.GetJoystick(1,1).y != 0)
         {
             anim.SetBool("Walking",true);
         }
         else
         {
             anim.SetBool("Walking", false);
-        }
+        }*/
         base.Move();
+        anim.SetFloat("Walking", Mathf.Abs(Movement.Axis.magnitude));
     }
 
     private IEnumerator WaitAndHeal()
