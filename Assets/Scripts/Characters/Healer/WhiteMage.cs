@@ -10,7 +10,6 @@ public class WhiteMage : Character3D {
     protected HealArea healArea;
     [SerializeField,Range(0,50)]
     protected int healManaCost;
-    protected Animator anim;
     protected ParticleSystem particles;
 
     override protected void Start()
@@ -19,7 +18,6 @@ public class WhiteMage : Character3D {
         base.Start();
         RefreshHealth(-50f);
         particles = GetComponent<ParticleSystem>();
-        anim = GetComponent<Animator>();
     }
 
     protected override void Attack()
@@ -29,7 +27,7 @@ public class WhiteMage : Character3D {
             healArea.effectArea.enabled = true;
             
             StartCoroutine(WaitAndHeal());
-            anim.SetTrigger("Cast");
+            animator.SetTrigger("Cast");
             particles.Play();
         }
         /*
@@ -50,7 +48,7 @@ public class WhiteMage : Character3D {
             anim.SetBool("Walking", false);
         }*/
         base.Move();
-        anim.SetFloat("Walking", Mathf.Abs(Movement.Axis.magnitude));
+        animator.SetFloat("Walking", Mathf.Abs(Movement.Axis.magnitude));
     }
 
     private IEnumerator WaitAndHeal()
