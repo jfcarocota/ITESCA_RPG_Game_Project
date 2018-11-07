@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Dummy : Character3D {
+    //mira wero deja de romper el git y borra esto cuando lo veas
+
 
     override protected void Start()
     {
