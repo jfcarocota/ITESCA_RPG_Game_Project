@@ -7,8 +7,7 @@ using GameCore.SystemMovements;
 public class WarriorMan : Character3D
 {
 
-    [SerializeField]
-    Animator anim;
+    
     [SerializeField]
     float shieldTime = .1f, currentTime = 0;
     [SerializeField]
@@ -16,11 +15,10 @@ public class WarriorMan : Character3D
     float oldMovementSpeed;
     bool cooldown = false;
     public bool Guarded = false;
-    public bool Guarded2 = false;
     public bool Attacking = false;
     public float Damage = 10;
     public float AttackTime = 0, timeAttack=0;
-    public Animation checkAnimation;
+   
 
     override protected void Start()
     {
@@ -33,12 +31,11 @@ public class WarriorMan : Character3D
     protected override void Attack()
     {
         base.Attack();
-        checkAnimation = GetComponent<Animator>().GetComponent<Animation>();
 
         //Animator animator = GetComponent<Animator>();
-
+    /*
         AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (animStateInfo.IsName("Attack") || animStateInfo.IsName("Walk and Attack") || animStateInfo.IsName("Shield and Attack"))
+       if (animStateInfo.IsName("Attack") || animStateInfo.IsName("Walk and Attack") || animStateInfo.IsName("Shield and Attack"))
         {
             AttackTime = animStateInfo.length + AttackTimeBonus ;
             Debug.Log("The character is attacking and his length is : "+AttackTime);
@@ -54,13 +51,13 @@ public class WarriorMan : Character3D
                 }
             }
         }
-        
+        */
         
 
         if (Controllers.GetButton(1, "A", 1) )
         {
-            anim.SetTrigger("Attack");
-            SetCollidersStatus(true, "Sword");
+            animator.SetTrigger("Attack");
+         //   SetCollidersStatus(true, "Sword");
             Attacking = true;
         }
 
@@ -70,7 +67,7 @@ public class WarriorMan : Character3D
     protected override void Move()
     {
         base.Move();
-        anim.SetFloat("Velocity", Mathf.Abs(Movement.Axis.magnitude));
+        animator.SetFloat("Velocity", Mathf.Abs(Movement.Axis.magnitude));
         
     }
 
@@ -79,19 +76,17 @@ public class WarriorMan : Character3D
         base.Guard();
         if (Controllers.GetButton(1, "B", 1))
         {
-          
-            anim.SetBool("Guard",true);
+
+            animator.SetBool("Guard",true);
             Guarded = true;
-            Guarded2 = true;
             rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ |  RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
         } else if (Controllers.GetButton(1, "B", 2))
             {
                 cooldown = true;
             if (currentTime > shieldTime) {
-                anim.SetBool("Guard", false);
+                animator.SetBool("Guard", false);
                 Guarded = false;
-                Guarded2 = false;
                 currentTime = 0;
             }
                  
@@ -104,7 +99,7 @@ public class WarriorMan : Character3D
             currentTime += Time.deltaTime;
         }
 
-        if (!anim.GetBool("Guard") && cooldown)
+        if (!animator.GetBool("Guard") && cooldown)
         {
             
             if(currentTime > shieldTime)
@@ -127,7 +122,7 @@ public class WarriorMan : Character3D
             RefreshHealth(-30f);
         }
         
-        if (other.tag == "Player" ) 
+        if (other.transform.root.tag == "Player" ) 
         {
             SetCollidersStatus(false, "Sword");
         }
@@ -153,30 +148,5 @@ public class WarriorMan : Character3D
         }
     }
 
-    public void CheckPlayerStatus()
-    {
-        checkAnimation = GetComponent<Animator>().GetComponent<Animation>();
-
-        Animator animator = GetComponent<Animator>();
-
-      
-        AnimatorStateInfo animStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        
-        
-      //  Debug.Log("Current animation is : " + animStateInfo.nameHash);
-        if (animStateInfo.IsName("Attack") || animStateInfo.IsName("Walk and Attack") || animStateInfo.IsName("Shield and Attack"))
-        {
-          //  Debug.Log("The character is attacking2");
-            AttackTime = anim.GetCurrentAnimatorClipInfo(0).Length;
-          //  Debug.Log("THE CURRENT ANIMATION TIME IS: " + AttackTime);
-            SetCollidersStatus(true, "Sword");
-
-        }
-        else
-        {
-           // Debug.Log("The character is not attacking2");
-            SetCollidersStatus(false, "Sword");
-        }
-    }
+   
 }

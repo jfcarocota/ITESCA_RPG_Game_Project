@@ -6,8 +6,7 @@ using GameCore.SystemControls;
 public class WarriorDummy: Character3D
 {
 
-    [SerializeField]
-    Animator anim;
+    
     [SerializeField]
     float shieldTime = .1f, currentTime = 0;
     [SerializeField]
@@ -15,11 +14,9 @@ public class WarriorDummy: Character3D
     float oldMovementSpeed;
     bool cooldown = false;
     public bool Guarded = false;
-    public bool Guarded2 = false;
     public bool Attacking = false;
     public float Damage = 10;
     public float AttackTime = 0, timeAttack = 0;
-    public Animation checkAnimation;
 
     override protected void Start()
     {
@@ -37,7 +34,7 @@ public class WarriorDummy: Character3D
         if (Controllers.GetButton(1, "Y", 1))
         {
 
-            anim.SetBool("Guard", true);
+            animator.SetBool("Guard", true);
             Guarded = true;
 
         }
@@ -46,8 +43,8 @@ public class WarriorDummy: Character3D
             cooldown = true;
             if (currentTime > shieldTime)
             {
-                anim.SetBool("Guard", false);
-                Guarded = true;
+                animator.SetBool("Guard", false);
+                Guarded = false;
                 currentTime = 0;
             }
 
@@ -60,7 +57,7 @@ public class WarriorDummy: Character3D
             currentTime += Time.deltaTime;
         }
 
-        if (!anim.GetBool("Guard") && cooldown)
+        if (!animator.GetBool("Guard") && cooldown)
         {
 
             if (currentTime > shieldTime)
@@ -88,8 +85,8 @@ public class WarriorDummy: Character3D
 
     protected override void Guard()
     {
-
-        checkAnimation = GetComponent<Animator>().GetComponent<Animation>();
+        
+       /* checkAnimation = GetComponent<Animator>().GetComponent<Animation>();
 
         Animator animator = GetComponent<Animator>();
 
@@ -119,12 +116,12 @@ public class WarriorDummy: Character3D
                 timeAttack = 0;
             }
         }
-
+        */
 
         if (Controllers.GetButton(1, "X", 1))
         {
-            anim.SetTrigger("Attack");
-            SetCollidersStatus(true, "Sword");
+            animator.SetTrigger("Attack");
+           // SetCollidersStatus(true, "Sword");
             Attacking = true;
         }
 
@@ -153,9 +150,10 @@ public class WarriorDummy: Character3D
         if (other.tag == "Damage" && (this.name != other.transform.root.name))
         {
             RefreshHealth(-30f);
+           // Debug.Log("Daño hecho");
         }
 
-        if (other.tag == "Player")
+        if (other.transform.root.tag == "Player")
         {
             SetCollidersStatus(false, "Sword");
         }
