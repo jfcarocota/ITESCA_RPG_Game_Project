@@ -4,7 +4,7 @@ using UnityEngine;
 using GameCore.SystemControls;
 using GameCore.SystemMovements;
 
-public class WhiteMage : Character3D {
+public class Healer : Character3D {
 
     [SerializeField]
     protected HealArea healArea;
@@ -14,43 +14,37 @@ public class WhiteMage : Character3D {
 
     override protected void Start()
     {
-        usesMana = true;
+        usesMana = true;//Tells the Character3D to use and activate the Mana bar
         base.Start();
-        RefreshHealth(-50f);
         particles = GetComponent<ParticleSystem>();
     }
 
+    /// <summary>
+    /// Attack of Heal in the Healer case, contains the logic for the heals
+    /// </summary>
     protected override void Attack()
     {
+        //if you press the heal button and you have enoght mana
         if (Controllers.GetButton(1, "A", 1) && RefreshMana(-healManaCost))
         {
-            healArea.effectArea.enabled = true;
+            healArea.effectArea.enabled = true;//enables the EffectArea trigger
             
             StartCoroutine(WaitAndHeal());
             animator.SetTrigger("Cast");
             particles.Play();
         }
-        /*
-        else if(Controllers.GetButton(1, "A", 1) && !RefreshMana(-healManaCost))
-        {
-            //hacer algo si no hay mana??
-        }
-        */
     }
     protected override void Move()
     {
-        /*if(Controllers.GetJoystick(1,1).y != 0)
-        {
-            anim.SetBool("Walking",true);
-        }
-        else
-        {
-            anim.SetBool("Walking", false);
-        }*/
         base.Move();
         animator.SetFloat("Walking", Mathf.Abs(Movement.Axis.magnitude));
     }
 
+    /// <summary>
+    /// Cooroutine so the EffectArea is active for .5secconds before turning back off. 
+    /// This is also where the heal takes effect, and heals the user and other players inside the EffectArea.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitAndHeal()
     {
         yield return new WaitForSeconds(.5f);
@@ -58,7 +52,6 @@ public class WhiteMage : Character3D {
         foreach (GameObject player in healArea.gOInside)
         {
             player.GetComponent<Character3D>().RefreshHealth(attackValue * 1f);
-            //print("Curado");
         }
         healArea.DisableEffectArea();
     }
