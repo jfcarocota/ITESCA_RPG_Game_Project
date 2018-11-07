@@ -9,6 +9,7 @@ TagManager:
   - Damage
   - Guard
   - Arrows
+  - Spell
   layers:
   - Default
   - TransparentFX
