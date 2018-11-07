@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
-using GameCore.SystemMovements;
 
 public class WarriorMan : Character3D
 {
@@ -54,7 +53,7 @@ public class WarriorMan : Character3D
         */
         
 
-        if (Controllers.GetButton(1, "A", 1) )
+        if (Controllers.GetFire(1, 1) )
         {
             animator.SetTrigger("Attack");
          //   SetCollidersStatus(true, "Sword");
@@ -67,21 +66,21 @@ public class WarriorMan : Character3D
     protected override void Move()
     {
         base.Move();
-        animator.SetFloat("Velocity", Mathf.Abs(Movement.Axis.magnitude));
+        animator.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
         
     }
 
     protected override void Guard()
     {
         base.Guard();
-        if (Controllers.GetButton(1, "B", 1))
+        if (Controllers.GetFire(2, 1))
         {
 
             animator.SetBool("Guard",true);
             Guarded = true;
             rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ |  RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
-        } else if (Controllers.GetButton(1, "B", 2))
+        } else if (Controllers.GetFire(2, 2))
             {
                 cooldown = true;
             if (currentTime > shieldTime) {
@@ -133,8 +132,9 @@ public class WarriorMan : Character3D
 
     }
 
-    protected  void OnCollisionEnter(Collision other)
+    override protected void OnCollisionEnter(Collision other)
     {
+        base.OnCollisionEnter(other);
         Debug.Log("Collision: " + other.collider.name + " Padre: " + other.transform.root.name + " Objeto tocado: " + this.name);
     }
     public void SetCollidersStatus(bool active, string Collider)

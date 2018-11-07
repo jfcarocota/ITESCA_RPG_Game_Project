@@ -9,13 +9,6 @@ namespace GameCore
     {
         public class Movement 
         {
-
-            public static Vector2 Axis {
-                get {
-                    return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                }
-            }
-
             public static void MoveForward(Rigidbody rb, float speed, Transform t)
             {
                 rb.velocity = t.forward * speed * Controllers.AxisDeltaTime.y;

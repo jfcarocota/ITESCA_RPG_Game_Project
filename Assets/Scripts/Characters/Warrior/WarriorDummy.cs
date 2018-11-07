@@ -31,14 +31,14 @@ public class WarriorDummy: Character3D
     {
         base.Guard();
         
-        if (Controllers.GetButton(1, "Y", 1))
+        if (Controllers.GetFire(4, 1))
         {
 
             animator.SetBool("Guard", true);
             Guarded = true;
 
         }
-        else if (Controllers.GetButton(1, "Y", 2))
+        else if (Controllers.GetFire(4, 2))
         {
             cooldown = true;
             if (currentTime > shieldTime)
@@ -118,7 +118,7 @@ public class WarriorDummy: Character3D
         }
         */
 
-        if (Controllers.GetButton(1, "X", 1))
+        if (Controllers.GetFire(3, 1))
         {
             animator.SetTrigger("Attack");
            // SetCollidersStatus(true, "Sword");
