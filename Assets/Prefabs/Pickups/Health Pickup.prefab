@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fa975a49c69a14ab07cbd848f5f4d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1944492588005142, guid: 695499383c583a942adfabebfd2d4764, type: 2}
+  prefab: {fileID: 100000, guid: 5a05530e91b66d44cb616fef7760c62a, type: 3}
   rotationSpeed: 2.8
   verticalSpeed: 4.32
   verticalSinInterval: 0.0068
