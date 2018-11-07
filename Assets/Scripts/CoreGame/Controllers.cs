@@ -9,7 +9,41 @@ namespace GameCore
             static bool[,] joystickMoved = new bool[connectedControllers, 2];
             static bool[,] TriggerMoved = new bool[connectedControllers, 2];
             static bool[] padMoved = new bool[connectedControllers];
-            
+
+            /// <summary>
+            /// Saber si un input Fire (default de Unity) fue presionado.
+            /// </summary>
+            /// <param name="n">Numero de Fire</param>
+            /// <param name="type">Tipo de input: 0 = Button, 1 = ButtonDown, 2 = ButtonUp</param>
+            /// <returns>Bool</returns>
+            public static bool GetFire(int n, int type) {
+                string input = "Fire" + n;
+                switch (type) {
+                    case 0: return Input.GetButton(input);
+                    case 1: return Input.GetButtonDown(input);
+                    case 2: return Input.GetButtonUp(input);
+                }
+                return false;
+            }
+
+            /// <summary>
+            /// Obtener el Axis horizontal y vertical como un Vector2.
+            /// </summary>
+            public static Vector2 Axis {
+                get {
+                    return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                }
+            }
+
+            /// <summary>
+            /// Obtener el Axis horizontal y vertical como un Vector2 multiplicado por Time.DeltaTime.
+            /// </summary>
+            public static Vector2 AxisDeltaTime {
+                get {
+                    return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Time.deltaTime;
+                }
+            }
+
             /// <summary>
             /// Saber si un boton fue presionado.
             /// </summary>

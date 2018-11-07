@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
 using GameCore.ObjectPooler;
-using GameCore.SystemMovements;
 
 public class DamageMage : Character3D {
     
@@ -24,19 +23,12 @@ public class DamageMage : Character3D {
 
     override protected void Move() {
         base.Move();
-        /*if (Mathf.Abs(Controllers.GetJoystick(1, 1).x) > 0) {
-            anim.SetFloat("Velocity", 1);
-        }
-        else {
-            anim.SetFloat("Velocity", Mathf.Abs(rb.velocity.x + rb.velocity.z));
-        }*/
-
-        anim.SetFloat("Velocity", Mathf.Abs(Movement.Axis.magnitude));
+        anim.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
     }
 
     protected override void Attack() {
         base.Attack();
-        if(Controllers.GetButton(1, "A", 2)) {
+        if(Controllers.GetFire(1, 2)) {
             if (RefreshMana(-manaSpell)) {
                 anim.SetTrigger("Attack");
                 objectPooler.GetObjectFromPool("Spell", spellSpawner.transform.position, spellSpawner.transform.rotation, null);

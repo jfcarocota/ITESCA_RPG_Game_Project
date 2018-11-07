@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
-using GameCore.SystemMovements;
 
 public class Healer : Character3D {
 
@@ -25,7 +24,7 @@ public class Healer : Character3D {
     protected override void Attack()
     {
         //if you press the heal button and you have enoght mana
-        if (Controllers.GetButton(1, "A", 1) && RefreshMana(-healManaCost))
+        if (Controllers.GetFire(1, 1) && RefreshMana(-healManaCost))
         {
             healArea.effectArea.enabled = true;//enables the EffectArea trigger
             
@@ -37,7 +36,7 @@ public class Healer : Character3D {
     protected override void Move()
     {
         base.Move();
-        animator.SetFloat("Walking", Mathf.Abs(Movement.Axis.magnitude));
+        animator.SetFloat("Walking", Mathf.Abs(Controllers.Axis.magnitude));
     }
 
     /// <summary>

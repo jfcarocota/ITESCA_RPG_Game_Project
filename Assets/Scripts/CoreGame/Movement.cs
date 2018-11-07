@@ -9,25 +9,16 @@ namespace GameCore
     {
         public class Movement 
         {
-            public static Vector2 Axis
-            {
-                get
-                {
-                    return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-                }
-            }
 
-            public static Vector2 AxisDeltaTime
-            {
-                get
-                {
-                    return Controllers.GetJoystick(1,1) * Time.deltaTime;
+            public static Vector2 Axis {
+                get {
+                    return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 }
             }
 
             public static void MoveForward(Rigidbody rb, float speed, Transform t)
             {
-                rb.velocity = t.forward * speed * AxisDeltaTime.y;
+                rb.velocity = t.forward * speed * Controllers.AxisDeltaTime.y;
             }
             
         
@@ -41,18 +32,18 @@ namespace GameCore
 
             public static void RotateY(Transform t, float rotationSpeed)
             {
-                rotation += Controllers.GetJoystick(1, 1).x * rotationSpeed;
+                rotation += Controllers.Axis.x * rotationSpeed;
 
                 t.rotation = Quaternion.Euler(0f, rotation, 0f);
             }
 
             public static void MoveTopDown(Transform t, float speed)
             {
-                t.Translate(Vector3.forward * Axis.magnitude * Time.deltaTime * speed);
+                t.Translate(Vector3.forward * Controllers.Axis.magnitude * Time.deltaTime * speed);
 
-                if(Axis != Vector2.zero)
+                if(Controllers.Axis != Vector2.zero)
                 {
-                    t.rotation = Quaternion.LookRotation(new Vector3(Axis.x, 0f, Axis.y));
+                    t.rotation = Quaternion.LookRotation(new Vector3(Controllers.Axis.x, 0f, Controllers.Axis.y));
                 }
             }
             
