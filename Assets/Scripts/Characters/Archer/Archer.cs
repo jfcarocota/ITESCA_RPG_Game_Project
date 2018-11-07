@@ -20,19 +20,27 @@ public class Archer : Character3D {
 
 	AnimatorStateInfo animStateInfo;
 
+    float originalMovementSpeed;
+
 	override protected void Start(){
 		base.Start ();
-		objectPooler = ObjectPooler.Instance;
-		contadorflechas = maxArrows;
+        objectPooler = ObjectPooler.Instance;
+        originalMovementSpeed = movementSpeed;
+        contadorflechas = maxArrows;
 		textArrows.text = "Flechas: " + contadorflechas;
 	}
 
 	override protected void Move() {
-        if (!Controllers.GetFire(1, 1)) {
-            base.Move();
+        if (Controllers.GetFire(1, 0)) {
+            movementSpeed = 0;
+            anim.SetFloat("Velocity", 0f);
+        }
+        else {
+            movementSpeed = originalMovementSpeed;
             anim.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
         }
-	}
+        base.Move();
+    }
 
 	override protected void Attack() {
 		if (contadorflechas > 0) {
@@ -43,15 +51,16 @@ public class Archer : Character3D {
 				animStateInfo = anim.GetCurrentAnimatorStateInfo (0);
 				if (animStateInfo.IsName ("shoot-still")) {
 					objectPooler.GetObjectFromPool ("Arrow", arrowSpawner.transform.position, arrowSpawner.transform.rotation, null);
-				}
+                    contadorflechas -= 1;
+                    textArrows.text = "Flechas: " + contadorflechas;
+                }
 				anim.SetBool ("Attack", false);
-				contadorflechas -= 1;
-				textArrows.text = "Flechas: " + contadorflechas;
 			}
 		}
 	}
 
 	override protected void OnTriggerEnter(Collider other){
+        base.OnTriggerEnter(other);
 		if (other.tag.Equals("Arrows")) {
 			if ((contadorflechas + 5) > maxArrows) {
 				contadorflechas = 10;

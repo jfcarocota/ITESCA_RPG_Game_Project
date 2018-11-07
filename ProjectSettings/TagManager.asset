@@ -10,6 +10,7 @@ TagManager:
   - Guard
   - Arrows
   - Spell
+  - Arrow
   layers:
   - Default
   - TransparentFX
