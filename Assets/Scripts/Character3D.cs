@@ -92,20 +92,7 @@ public abstract class Character3D : MonoBehaviour {
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-		print (other);
-        if(other.tag == "Damage")
-        {
-            //hay que poner un scrip o hacer alguna manera en la que podamos darle un valor al daño que hacen los ataques
-            float damage = 30f;
-            RefreshHealth(-damage);
-        }
-        else if(other.tag == "Heal")
-        {
-            //hay que poner un scrip o hacer alguna manera en la que podamos darle un valor al daño que hacen los ataques
-            float healAmount = 30f;
-            RefreshHealth(healAmount);
-        }
-        else if (other.tag == "ManaPickup") {
+        if (other.tag == "ManaPickup") {
             RefreshMana(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
         }
@@ -113,7 +100,6 @@ public abstract class Character3D : MonoBehaviour {
             RefreshHealth(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
         }
-        //aqui hay que poner los tags de las pociones de vida y mana y las flechas, alomejor el de las flechas nomas en el del arquero
     }
 
     public void RefreshHealth(float healthChange)
