@@ -13,8 +13,6 @@ public abstract class Character3D : MonoBehaviour {
     protected int maxManaValue;
     [SerializeField]
     protected float movementSpeed;
-    [SerializeField, Range(0,5)]
-    protected float rotationSpeed;
     [SerializeField]
     protected float guardValue;
     [SerializeField]
