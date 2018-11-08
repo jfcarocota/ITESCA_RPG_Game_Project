@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Dummy : Character3D {
 
+    [Range (0,99)]
+    public int startDamage;
+
     override protected void Start()
     {
         base.Start();
-        RefreshHealth(-50f);
+        RefreshHealth((float)-startDamage);
     }
 
     protected override void OnTriggerEnter(Collider other) {
