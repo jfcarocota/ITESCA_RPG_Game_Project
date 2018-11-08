@@ -63,7 +63,10 @@ public class WarriorMan : Character3D
 
     protected override void Move()
     {
-        base.Move();
+        if(!Guarded)
+        { base.Move();
+        }
+        
         animator.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
         
     }
