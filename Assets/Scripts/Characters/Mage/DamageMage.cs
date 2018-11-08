@@ -7,8 +7,6 @@ using GameCore.ObjectPooler;
 public class DamageMage : Character3D {
     
     [SerializeField]
-    Animator anim;
-    [SerializeField]
     GameObject spellSpawner;
     [SerializeField, Range(0,100)]
     int manaSpell;
@@ -23,14 +21,14 @@ public class DamageMage : Character3D {
 
     override protected void Move() {
         base.Move();
-        anim.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
+        animator.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
     }
 
     protected override void Attack() {
         base.Attack();
         if(Controllers.GetFire(1, 2)) {
             if (RefreshMana(-manaSpell)) {
-                anim.SetTrigger("Attack");
+                animator.SetTrigger("Attack");
                 objectPooler.GetObjectFromPool("Spell", spellSpawner.transform.position, spellSpawner.transform.rotation, null);
                 objectPooler.GetObjectFromPool("SpellCast", spellSpawner.transform.position, spellSpawner.transform.rotation, spellSpawner.transform);
             }
