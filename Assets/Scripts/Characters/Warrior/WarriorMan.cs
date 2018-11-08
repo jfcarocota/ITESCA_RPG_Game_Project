@@ -7,16 +7,14 @@ public class WarriorMan : Character3D
 {
 
     
-    [SerializeField]
+    
     float shieldTime = .1f, currentTime = 0;
-    [SerializeField]
+    
     float AttackTimeBonus = .5f;
     float oldMovementSpeed;
     bool cooldown = false;
     public bool Guarded = false;
-    public bool Attacking = false;
-    public float Damage = 10;
-    public float AttackTime = 0, timeAttack=0;
+    
    
 
     override protected void Start()
@@ -57,7 +55,7 @@ public class WarriorMan : Character3D
         {
             animator.SetTrigger("Attack");
          //   SetCollidersStatus(true, "Sword");
-            Attacking = true;
+            
         }
 
        

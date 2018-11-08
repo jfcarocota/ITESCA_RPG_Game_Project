@@ -17,6 +17,11 @@ public class Dummy : Character3D {
         if (other.tag == "Arrow") {
             RefreshHealth(-40f);
         }
+        if (other.tag == "Damage")
+        {
+            RefreshHealth(-40f);
+        }
+
     }
 
     protected override void Move()
