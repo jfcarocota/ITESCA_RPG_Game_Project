@@ -1746,11 +1746,10 @@ MonoBehaviour:
   movementSpeed: 2.8
   rotationSpeed: 3
   guardValue: 0
-  attackValue: 0
+  attackValue: 20
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   deadText: {fileID: 0}
-  anim: {fileID: 95332026502950244}
   spellSpawner: {fileID: 1381014913759742}
   manaSpell: 10
 --- !u!136 &136882823113813660

@@ -1421,9 +1421,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxManaValue: 100
   movementSpeed: 2.8
-  rotationSpeed: 3
+  rotationSpeed: 0
   guardValue: 0
-  attackValue: 0
+  attackValue: 20
   healthBar: {fileID: 1991101297}
   manaBar: {fileID: 449258814}
   deadText: {fileID: 489636065}

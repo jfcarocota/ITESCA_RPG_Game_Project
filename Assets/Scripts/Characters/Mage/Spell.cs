@@ -6,7 +6,10 @@ using GameCore.ObjectPooler;
 #pragma warning disable 0649
 
 public class Spell : PooledObjectBehavior {
-    
+
+    [HideInInspector]
+    public float damageValue;
+
     [SerializeField]
     float velocity;
     Rigidbody speelRigidBody;
@@ -27,6 +30,7 @@ public class Spell : PooledObjectBehavior {
 
     override protected void Awake() {
         speelRigidBody = GetComponent<Rigidbody>();
+        damageValue = GameObject.Find("Maga").GetComponent<DamageMage>().attackValue;
     }
     
     override protected void Start() {

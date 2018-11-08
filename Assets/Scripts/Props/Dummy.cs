@@ -15,7 +15,7 @@ public class Dummy : Character3D {
 
     protected override void OnTriggerEnter(Collider other) {
         if (other.tag == "Spell") {
-            RefreshHealth(-20f);
+            RefreshHealth(-other.gameObject.GetComponent<Spell>().damageValue);
         }
         if (other.tag == "Arrow") {
             RefreshHealth(-40f);

@@ -16,7 +16,7 @@ public abstract class Character3D : MonoBehaviour {
     [SerializeField]
     protected float guardValue;
     [SerializeField]
-    protected float attackValue;
+    public float attackValue;
     protected Rigidbody rb;
     protected bool usesMana;
 
