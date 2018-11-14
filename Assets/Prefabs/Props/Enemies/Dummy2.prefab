@@ -226,7 +226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039048268935802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.26, y: 1.05, z: 9.69}
+  m_LocalPosition: {x: -7.26, y: -0.26, z: 9.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4393106083429080}
@@ -396,12 +396,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxManaValue: 50
   movementSpeed: 0
-  rotationSpeed: 0
   guardValue: 0
   attackValue: 0
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   deadText: {fileID: 0}
+  startDamage: 99
 --- !u!136 &136407325396553502
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -411,7 +411,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3.975709
+  m_Radius: 0.22654057
+  m_Height: 1.4215894
   m_Direction: 1
-  m_Center: {x: 0, y: 2.0000796, z: 0}
+  m_Center: {x: -0.0039258003, y: 0.72301984, z: 0}
