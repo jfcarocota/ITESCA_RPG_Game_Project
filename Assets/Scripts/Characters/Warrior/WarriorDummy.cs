@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemControls;
 
+
 public class WarriorDummy: Character3D
 {
 
@@ -10,7 +11,7 @@ public class WarriorDummy: Character3D
    
     float shieldTime = .1f, currentTime = 0;
     
-    float AttackTimeBonus = .5f;
+    //float AttackTimeBonus = .5f;
     float oldMovementSpeed;
     bool cooldown = false;
     public bool Guarded = false;

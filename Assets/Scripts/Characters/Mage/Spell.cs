@@ -55,10 +55,12 @@ public class Spell : PooledObjectBehavior {
     }
     
     private void OnTriggerEnter(Collider other) {
-        collide = true;
-        speelRigidBody.velocity = Vector3.zero;
-        objectPooler.GetObjectFromPool("SpellDissolve", lastPosition, transform.rotation, null);
-        ReturnObjectToPool();
+        if (other.tag != "FollowEnemyTrigger") {
+            collide = true;
+            speelRigidBody.velocity = Vector3.zero;
+            objectPooler.GetObjectFromPool("SpellDissolve", lastPosition, transform.rotation, null);
+            ReturnObjectToPool();
+        }
     }
 
     override protected void ReturnObjectToPool() {

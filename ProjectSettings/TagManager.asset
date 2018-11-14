@@ -11,6 +11,9 @@ TagManager:
   - Arrows
   - Spell
   - Arrow
+  - Floor
+  - Spike
+  - FollowEnemyTrigger
   layers:
   - Default
   - TransparentFX

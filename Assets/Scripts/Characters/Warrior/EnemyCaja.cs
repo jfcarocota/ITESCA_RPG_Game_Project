@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Character3D
+public class EnemyCaja : Character3D
 {
     
      protected override void Start () {
