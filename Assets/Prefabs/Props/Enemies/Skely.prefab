@@ -420,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1237726998984306
 GameObject:
   m_ObjectHideFlags: 1
@@ -3006,6 +3006,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   deadText: {fileID: 0}
+  startDamage: 0
+  player: {fileID: 0}
+  trackDistance: 8
   followPlayer: 0
   playerPosition: {x: 0, y: 0, z: 0}
   attackPlayer: 0
