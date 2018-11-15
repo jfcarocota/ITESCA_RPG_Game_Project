@@ -8,12 +8,12 @@ public class Enemy : Character3D {
     public int startDamage;
 
     [SerializeField]
-    GameObject player;
-    Vector3 playerPosition;
-    float distanceToPlayer;
-    bool tracked;
+    protected GameObject player;
+    protected Vector3 playerPosition;
+    protected float distanceToPlayer;
+    protected bool tracked;
     [SerializeField]
-    float trackDistance;
+    protected float trackDistance;
 
     override protected void Start() {
         base.Start();
@@ -49,7 +49,7 @@ public class Enemy : Character3D {
         }
     }
 
-    bool ProximityCheck() {
+    protected bool ProximityCheck() {
         playerPosition = player.transform.position;
         if (Vector3.Distance(transform.position, playerPosition) < trackDistance) {
             return true;
