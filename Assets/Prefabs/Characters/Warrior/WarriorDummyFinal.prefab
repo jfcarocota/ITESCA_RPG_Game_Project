@@ -908,8 +908,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503036329037836}
   m_LocalRotation: {x: -0.00009107088, y: 0.000009137343, z: -0.0013780515, w: 0.99999905}
-  m_LocalPosition: {x: -12.58, y: -3.58, z: -2.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -15.65, y: -0.49, z: -3.21}
+  m_LocalScale: {x: 0.32746378, y: 0.32746378, z: 0.32746378}
   m_Children:
   - {fileID: 4520873182093018}
   - {fileID: 4412589943834362}
@@ -1203,7 +1203,7 @@ BoxCollider:
   m_GameObject: {fileID: 1374454974912344}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 67.97065, y: 41.860153, z: 285.18048}
   m_Center: {x: 234.96446, y: 407.3599, z: 106.313194}
@@ -1249,23 +1249,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxManaValue: 0
   movementSpeed: 0
-  rotationSpeed: 0
   guardValue: 0
   attackValue: 0
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   deadText: {fileID: 1998127813644468, guid: 1d1b185217404884e935f332e9fdd510, type: 2}
-  anim: {fileID: 95620692092072130}
-  shieldTime: 0.5
-  currentTime: 0
-  AttackTimeBonus: 0.1
   Guarded: 0
-  Guarded2: 0
-  Attacking: 0
-  Damage: 10
-  AttackTime: 0
-  timeAttack: 0
-  checkAnimation: {fileID: 0}
 --- !u!136 &136086008778710326
 CapsuleCollider:
   m_ObjectHideFlags: 1

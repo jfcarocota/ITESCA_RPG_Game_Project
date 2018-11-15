@@ -4,34 +4,52 @@ using UnityEngine;
 using GameCore.SystemControls;
 using GameCore.ObjectPooler;
 
-public class Cannon : MonoBehaviour {
+public class Cannon : Enemy
+{
 
     [SerializeField]
     GameObject ballSpawner;
-    ObjectPooler objectPooler;
-    public float attackValue;
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        Shoot();
-	}
+    [SerializeField]
+    float timeshoot=3f;
+    bool Attacking = true;
 
-    void Shoot()
+    ObjectPooler objectPooler;
+
+    protected override void Start()
     {
-        if (Controllers.GetFire(1, 2))
+        base.Start();
+        objectPooler = ObjectPooler.Instance;
+    }
+
+    override protected void Move()
+    {
+        base.Move();
+    }
+
+    protected override void Attack()
+    {
+        base.Attack();
+
+       
+        if (Attacking)
         {
-            
-                
-                objectPooler.GetObjectFromPool("Spell", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
-                objectPooler.GetObjectFromPool("SpellCast", ballSpawner.transform.position, ballSpawner.transform.rotation, ballSpawner.transform);
-            
+            StartCoroutine(Shoot());
+            objectPooler.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
+            // objectPooler.GetObjectFromPool("SpellCast", ballSpawner.transform.position, ballSpawner.transform.rotation, ballSpawner.transform);
+            Attacking=false;
         }
 
 
+
+    }
+
+    IEnumerator Shoot()
+    {
+
+        
+        yield return new WaitForSeconds(timeshoot);
+       // Debug.Log("Attack!");
+        Attacking = true;
 
     }
 }
