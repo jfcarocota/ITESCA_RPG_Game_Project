@@ -50,7 +50,6 @@ public class SkelyEnemy : Enemy {
             base.Move();
             firstTracked = tracked ? false : firstTracked;
             followPlayer = !firstTracked;
-            print("pena");
         }
         
             
@@ -60,7 +59,6 @@ public class SkelyEnemy : Enemy {
         
         if (attackPlayer)
         {
-            print("ATAC");
             attackPlayer = false;
             animator.SetTrigger("Attack");
             StartCoroutine(AttackAndWait(2f));
