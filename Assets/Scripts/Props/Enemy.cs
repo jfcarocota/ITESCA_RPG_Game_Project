@@ -28,11 +28,14 @@ public class Enemy : Character3D {
         if (other.tag == "Spell") {
             RefreshHealth(-other.gameObject.GetComponent<Spell>().damageValue);
         }
-        if (other.tag == "Arrow") {
+        else if (other.tag == "Arrow") {
             RefreshHealth(-40f);
         }
-        if (other.tag == "Damage") {
+        else if (other.tag == "Damage") {
             RefreshHealth(-40f);
+        }
+        if (healthValue <= 0) {
+            Destroy(gameObject);
         }
     }
 
