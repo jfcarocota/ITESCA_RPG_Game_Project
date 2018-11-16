@@ -35,7 +35,7 @@ public class Cannon : Enemy
         {
             StartCoroutine(Shoot());
             objectPooler.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
-            // objectPooler.GetObjectFromPool("SpellCast", ballSpawner.transform.position, ballSpawner.transform.rotation, ballSpawner.transform);
+            objectPooler.GetObjectFromPool("SmokeRing", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
             Attacking=false;
         }
 
