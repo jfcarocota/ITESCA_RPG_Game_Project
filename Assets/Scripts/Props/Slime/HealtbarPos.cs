@@ -13,6 +13,6 @@ public class HealtbarPos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(target);
+        transform.LookAt(target.position);
     }
 }
