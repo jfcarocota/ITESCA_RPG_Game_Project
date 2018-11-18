@@ -8,16 +8,19 @@ public class Enemy : Character3D {
     public int startDamage;
 
     [SerializeField]
-    protected GameObject player;
-    protected Vector3 playerPosition;
+    protected Transform playerTransform;
     protected float distanceToPlayer;
     protected bool tracked;
     [SerializeField]
     protected float trackDistance;
 
+    [SerializeField, Range(0,10)]
+    float knockbackForce;
+
     override protected void Start() {
         base.Start();
         RefreshHealth((float)-startDamage);
+        StartCoroutine(DoCheck());
     }
 
     protected override void OnCollisionEnter(Collision collision) {
@@ -27,12 +30,15 @@ public class Enemy : Character3D {
     protected override void OnTriggerEnter(Collider other) {
         if (other.tag == "Spell") {
             RefreshHealth(-other.gameObject.GetComponent<Spell>().damageValue);
+            Knockback();
         }
         else if (other.tag == "Arrow") {
             RefreshHealth(-40f);
+            Knockback();
         }
         else if (other.tag == "Damage") {
             RefreshHealth(-40f);
+            Knockback();
         }
         if (healthValue <= 0) {
             Destroy(gameObject);
@@ -40,7 +46,6 @@ public class Enemy : Character3D {
     }
 
     protected override void Move() {
-        StartCoroutine(DoCheck());
         if (tracked) {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
         }
@@ -48,13 +53,12 @@ public class Enemy : Character3D {
 
     protected override void Rotate() {
         if (tracked) {
-            transform.LookAt(new Vector3(playerPosition.x, transform.position.y, playerPosition.z));
+            transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
         }
     }
 
     protected bool ProximityCheck() {
-        playerPosition = player.transform.position;
-        if (Vector3.Distance(transform.position, playerPosition) < trackDistance) {
+        if (Vector3.Distance(transform.position, playerTransform.position) < trackDistance) {
             return true;
         }
         return false;
@@ -65,6 +69,11 @@ public class Enemy : Character3D {
             tracked = ProximityCheck(); 
             yield return new WaitForSeconds(.5f);
         }
+    }
+
+    void Knockback() {
+        Vector3 knockbak = transform.position - playerTransform.position;
+        rb.AddForce(knockbak.normalized * knockbackForce, ForceMode.Impulse);
     }
 
 }
