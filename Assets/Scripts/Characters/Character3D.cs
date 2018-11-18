@@ -98,6 +98,10 @@ public abstract class Character3D : MonoBehaviour {
             RefreshHealth(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
         }
+        else if (other.tag == "Damage")
+        {
+            RefreshHealth(-20f);
+        }
     }
 
     public void RefreshHealth(float healthChange)
