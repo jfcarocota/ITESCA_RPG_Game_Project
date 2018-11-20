@@ -1,24 +1,35 @@
 fileFormatVersion: 2
-guid: f1909022ed98ae84ebab2e24f2d35705
+guid: 5c56a38a1d8876648a8c1c75b4e5ab07
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: slime
-    100004: slime_in
-    100006: slime_out
-    100008: transform1
-    100010: transform2
-    400000: //RootNode
-    400002: slime
-    400004: slime_in
-    400006: slime_out
-    400008: transform1
-    400010: transform2
+    100000: joint1
+    100002: joint2
+    100004: joint3
+    100006: joint4
+    100008: joint5
+    100010: slime
+    100012: slime_in
+    100014: slime_out
+    100016: //RootNode
+    100018: transform1
+    100020: transform2
+    400000: joint1
+    400002: joint2
+    400004: joint3
+    400006: joint4
+    400008: joint5
+    400010: slime
+    400012: slime_in
+    400014: slime_out
+    400016: //RootNode
+    400018: transform1
+    400020: transform2
     2100000: m_slime_out
-    2300000: slime
-    3300000: slime
     4300000: slime
+    7400000: squelch
+    9500000: //RootNode
+    13700000: slime
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,7 +61,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 1.6
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -71,7 +82,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -96,7 +107,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

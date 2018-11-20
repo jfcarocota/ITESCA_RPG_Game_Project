@@ -1,26 +1,35 @@
 fileFormatVersion: 2
-guid: e1b2d14090df77a4a9de03b62c0f6f07
+guid: ba9571d1072d1ec4db2ac2c5ef57152d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: slime
-    100002: //RootNode
-    100004: slime_in
-    100006: slime_out
-    100008: transform1
-    100010: transform2
-    400000: slime
-    400002: //RootNode
-    400004: slime_in
-    400006: slime_out
-    400008: transform1
-    400010: transform2
+    100000: joint1
+    100002: joint2
+    100004: joint3
+    100006: joint4
+    100008: joint5
+    100010: slime
+    100012: slime_in
+    100014: slime_out
+    100016: //RootNode
+    100018: transform1
+    100020: transform2
+    400000: joint1
+    400002: joint2
+    400004: joint3
+    400006: joint4
+    400008: joint5
+    400010: slime
+    400012: slime_in
+    400014: slime_out
+    400016: //RootNode
+    400018: transform1
+    400020: transform2
     2100000: m_slime_out
-    2300000: slime
-    3300000: slime
     4300000: slime
-    7400000: Slime Idle
+    7400000: stretch
     9500000: //RootNode
+    13700000: slime
   externalObjects: {}
   materials:
     importMaterials: 1
