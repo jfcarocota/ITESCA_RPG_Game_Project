@@ -258,6 +258,16 @@ Prefab:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1248598721}
+    - target: {fileID: 224204156792767702, guid: 5048f7a42cc9b8c49aeea82544bfa78c,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114518879451818838, guid: 5048f7a42cc9b8c49aeea82544bfa78c,
+        type: 2}
+      propertyPath: maxHealthValue
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5048f7a42cc9b8c49aeea82544bfa78c, type: 2}
   m_IsPrefabAsset: 0
@@ -705,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a837a33492395a6489684b8cb7c44ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthValue: 25
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0
@@ -1775,6 +1786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ee5e20b47043b4a81a8b90a74cc1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthValue: 100
   maxManaValue: 100
   movementSpeed: 2.8
   guardValue: 0
@@ -2138,6 +2150,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 247438bf64124c8498252bbae8414b81, type: 2}
+    - target: {fileID: 100016, guid: 9dfa23f7b0b384442adf16b194ed2809, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dfa23f7b0b384442adf16b194ed2809, type: 3}
   m_IsPrefabAsset: 0
@@ -2162,6 +2178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a837a33492395a6489684b8cb7c44ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthValue: 75
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0
@@ -2336,7 +2353,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1597324797}
-  m_LocalRotation: {x: 0.13381398, y: -0.0017954686, z: 0.00024217433, w: 0.9910048}
+  m_LocalRotation: {x: 0.13381398, y: -0.0017954685, z: 0.0002421738, w: 0.9910048}
   m_LocalPosition: {x: 0, y: 3.76, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2422,6 +2439,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 725afcb9172877543a834afced937076, type: 2}
+    - target: {fileID: 100016, guid: 964bbfff5cfcf0f478b5e22767ccd970, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 964bbfff5cfcf0f478b5e22767ccd970, type: 3}
   m_IsPrefabAsset: 0
@@ -2446,6 +2467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a837a33492395a6489684b8cb7c44ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthValue: 50
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0
@@ -2763,7 +2785,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083802628}
-  m_LocalRotation: {x: 0.13381398, y: -0.0017954686, z: 0.00024217433, w: 0.9910048}
+  m_LocalRotation: {x: 0.13381398, y: -0.0017954685, z: 0.0002421738, w: 0.9910048}
   m_LocalPosition: {x: 0, y: 3.76, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

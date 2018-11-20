@@ -9,6 +9,8 @@ public abstract class Character3D : MonoBehaviour {
 
     protected float healthValue;
     protected int manaValue;
+    [SerializeField, Range(1, 1000)]
+    protected float maxHealthValue;
     [SerializeField, Range(50,1000)]
     protected int maxManaValue;
     [SerializeField]
@@ -40,7 +42,7 @@ public abstract class Character3D : MonoBehaviour {
     protected virtual void Start () {
         rb = GetComponent<Rigidbody>();
         healthBarValue = healthBar.transform.GetChild(1).GetComponent<Image>();
-        healthValue = 100f;
+        healthValue = maxHealthValue;
 
         RefreshHealth(0f);
         if (usesMana)
@@ -107,10 +109,10 @@ public abstract class Character3D : MonoBehaviour {
     public void RefreshHealth(float healthChange)
     {
         healthValue = healthValue + healthChange < 0 ? 0 :
-            healthValue + healthChange > 100 ? 100 :
+            healthValue + healthChange > maxHealthValue ? maxHealthValue :
             healthValue + healthChange;
 
-        healthBarValue.fillAmount = healthValue / 100f;
+        healthBarValue.fillAmount = healthValue / maxHealthValue;
         if (healthValue <= 0)
         {
             deadText.SetActive(true);
