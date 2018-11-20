@@ -20,7 +20,7 @@ public class Enemy : Character3D {
     override protected void Start() {
         base.Start();
         RefreshHealth((float)-startDamage);
-        StartCoroutine(DoCheck());
+        StartCoroutine(CheckProximityToPlayer());
     }
 
     protected override void OnCollisionEnter(Collision collision) {
@@ -41,7 +41,7 @@ public class Enemy : Character3D {
             Knockback();
         }
         if (healthValue <= 0) {
-            Destroy(gameObject);
+            OnDeath();
         }
     }
 
@@ -56,24 +56,21 @@ public class Enemy : Character3D {
             transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
         }
     }
-
-    protected bool ProximityCheck() {
-        if (Vector3.Distance(transform.position, playerTransform.position) < trackDistance) {
-            return true;
-        }
-        return false;
-    }
-
-    IEnumerator DoCheck() {
+    
+    IEnumerator CheckProximityToPlayer() {
         for (;;) {
-            tracked = ProximityCheck(); 
+            tracked = Vector3.Distance(transform.position, playerTransform.position) < trackDistance;
             yield return new WaitForSeconds(.5f);
         }
     }
 
-    void Knockback() {
+    protected virtual void Knockback() {
         Vector3 knockbak = transform.position - playerTransform.position;
         rb.AddForce(knockbak.normalized * knockbackForce, ForceMode.Impulse);
+    }
+
+    protected virtual void OnDeath() {
+        Destroy(gameObject);
     }
 
 }

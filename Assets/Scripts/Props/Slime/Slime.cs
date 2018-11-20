@@ -13,6 +13,11 @@ public class Slime : Enemy {
     
     AnimatorStateInfo animStateInfo;
 
+    [SerializeField]
+    bool instantiatesSlimes;
+    [SerializeField]
+    GameObject slimesToInstantiate;
+
     override protected void Start() {
         base.Start();
         touchGround = false;
@@ -43,6 +48,18 @@ public class Slime : Enemy {
         movementSpeed = originalMovementSpeed;
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isInAir = true;
+    }
+
+    protected override void OnDeath() {
+        base.OnDeath();
+        if (instantiatesSlimes) {
+            GameObject go = null;
+            for (int i = 0; i < 2; i++) {
+                go = Instantiate(slimesToInstantiate, transform.position, transform.rotation);
+                go.GetComponent<Rigidbody>().AddForce( (i == 0? 2f : -2f) * transform.right + Vector3.up * 3, ForceMode.Impulse);
+                go.GetComponent<Slime>().playerTransform = playerTransform;
+            }
+        }
     }
 
 }
