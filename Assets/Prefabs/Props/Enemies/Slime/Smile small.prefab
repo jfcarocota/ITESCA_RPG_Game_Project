@@ -614,15 +614,17 @@ MonoBehaviour:
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0
-  attackValue: 0
+  attackValue: 10
   healthBar: {fileID: 1221291808752626}
   manaBar: {fileID: 0}
   deadText: {fileID: 1541452376702858}
   startDamage: 0
   playerTransform: {fileID: 0}
   trackDistance: 8
-  knockbackForce: 4.97
-  jumpForce: 5.97
+  knockbackForce: 5.57
+  jumpForce: 5.5
+  instantiatesSlimes: 0
+  slimesToInstantiate: {fileID: 0}
 --- !u!114 &114976588320890032
 MonoBehaviour:
   m_ObjectHideFlags: 1

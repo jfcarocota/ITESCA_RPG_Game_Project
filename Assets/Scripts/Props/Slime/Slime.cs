@@ -10,9 +10,8 @@ public class Slime : Enemy {
     float originalMovementSpeed;
     bool touchGround;
     bool isInAir;
+    bool canAttackAgain;
     
-    AnimatorStateInfo animStateInfo;
-
     [SerializeField]
     bool instantiatesSlimes;
     [SerializeField]
@@ -20,6 +19,7 @@ public class Slime : Enemy {
 
     override protected void Start() {
         base.Start();
+        canAttackAgain = true;
         touchGround = false;
         isInAir = true;
         originalMovementSpeed = movementSpeed;
@@ -34,7 +34,18 @@ public class Slime : Enemy {
     
     protected override void OnCollisionEnter(Collision collision) {
         base.OnCollisionEnter(collision);
-        if (isInAir && collision.gameObject.tag == "Floor") {
+        if (collision.gameObject.tag == "Player") {
+            Vector3 knockbak = playerTransform.position - transform.position;
+            knockbak = new Vector3(knockbak.x, 0f, knockbak.z);
+            knockbak = knockbak.normalized;
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(knockbak * 4 + Vector3.up * 2, ForceMode.Impulse);
+            if (canAttackAgain) {
+                canAttackAgain = false;
+                collision.gameObject.GetComponent<DamageMage>().RefreshHealth(-attackValue);
+                StartCoroutine(MakeCanAttackAgain());
+            }
+        }
+        else if (isInAir && collision.gameObject.tag == "Floor") {
             touchGround = true;
             isInAir = false;
         }
@@ -46,7 +57,7 @@ public class Slime : Enemy {
         animator.SetTrigger("TouchGround");
         yield return new WaitForSeconds(20f / 30f);
         movementSpeed = originalMovementSpeed;
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.right * Random.Range(-2f, 2f) + Vector3.up * jumpForce, ForceMode.Impulse);
         isInAir = true;
     }
 
@@ -60,6 +71,11 @@ public class Slime : Enemy {
                 go.GetComponent<Slime>().playerTransform = playerTransform;
             }
         }
+    }
+
+    IEnumerator MakeCanAttackAgain() {
+        yield return new WaitForSeconds(1f);
+        canAttackAgain = true;
     }
 
 }
