@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114018528815848606}
   m_Layer: 0
   m_Name: CannonBall 1
-  m_TagString: CannonBall
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,10 +114,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLifeTime: 3
   poolTag: CannonBall
+  smoke: {fileID: 0}
   damageValue: 0
   velocity: 5
   scaleFactor: 0
-  spellStartDecresingTime: 0
+  smokeStartDecresingTime: 0
+  life: 0
 --- !u!135 &135772129943328028
 SphereCollider:
   m_ObjectHideFlags: 1

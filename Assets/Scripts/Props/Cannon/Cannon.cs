@@ -19,6 +19,7 @@ public class Cannon : Enemy
     {
         base.Start();
         objectPooler = ObjectPooler.Instance;
+        
     }
 
     override protected void Move()
@@ -41,8 +42,11 @@ public class Cannon : Enemy
 
 
 
+
+
     }
 
+   
     IEnumerator Shoot()
     {
 
