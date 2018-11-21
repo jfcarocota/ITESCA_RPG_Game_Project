@@ -347,6 +347,10 @@ Prefab:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1248598721}
+    - target: {fileID: 1566544473727770, guid: a9ed0b44a5c00ce46bbb4bc8d64919f2, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ed0b44a5c00ce46bbb4bc8d64919f2, type: 2}
   m_IsPrefabAsset: 0
@@ -1741,7 +1745,7 @@ MonoBehaviour:
   maxManaValue: 100
   movementSpeed: 2.8
   guardValue: 0
-  attackValue: 20
+  attackValue: 0
   healthBar: {fileID: 1991101297}
   manaBar: {fileID: 449258814}
   deadText: {fileID: 489636065}
@@ -2325,7 +2329,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1597324797}
-  m_LocalRotation: {x: 0.13381396, y: -0.0017933118, z: 0.00024188851, w: 0.9910048}
+  m_LocalRotation: {x: 0.13381398, y: -0.0017925446, z: 0.0002417861, w: 0.9910048}
   m_LocalPosition: {x: 0, y: 3.76, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2664,7 +2668,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083802628}
-  m_LocalRotation: {x: 0.13381396, y: -0.0017933118, z: 0.00024188851, w: 0.9910048}
+  m_LocalRotation: {x: 0.13381398, y: -0.0017925446, z: 0.0002417861, w: 0.9910048}
   m_LocalPosition: {x: 0, y: 3.76, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -7,7 +7,7 @@ using GameCore.ObjectPooler;
 
 public class Spell : PooledObjectBehavior {
 
-    [HideInInspector]
+    [SerializeField]
     public float damageValue;
 
     [SerializeField]
@@ -28,9 +28,9 @@ public class Spell : PooledObjectBehavior {
     Vector3 spelltInitialScale;
     float scale;
 
+
     override protected void Awake() {
         speelRigidBody = GetComponent<Rigidbody>();
-        damageValue = GameObject.Find("Maga").GetComponent<DamageMage>().attackValue;
     }
     
     override protected void Start() {
