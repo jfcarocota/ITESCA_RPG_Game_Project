@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5dba0d8242bd34e8328c056fd19627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthValue: 150
   maxManaValue: 0
   movementSpeed: 0
   guardValue: 0
@@ -572,7 +573,7 @@ MonoBehaviour:
   healthBar: {fileID: 1714767182186830}
   manaBar: {fileID: 0}
   deadText: {fileID: 1048808481734582}
-  startDamage: 70
+  startDamage: 75
   playerTransform: {fileID: 0}
   trackDistance: 0
   knockbackForce: 0
