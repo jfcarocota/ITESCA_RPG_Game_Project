@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 114413842783457332}
   m_Layer: 0
   m_Name: AttackArea
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3165,6 +3165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7723629b4e677ed4d8af8e398f49e680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealthValue: 1000
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0

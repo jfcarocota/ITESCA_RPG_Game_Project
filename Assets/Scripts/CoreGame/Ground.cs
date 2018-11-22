@@ -11,7 +11,6 @@ namespace GameCore
         [Serializable]
         public class Ground
         {
-
             [SerializeField]
             Color rayColor = Color.red;
             [SerializeField, Range(0f, 10f)]

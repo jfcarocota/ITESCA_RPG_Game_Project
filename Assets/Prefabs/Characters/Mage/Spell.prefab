@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLifeTime: 0.75
   poolTag: Spell
+  damageValue: 20
   velocity: 500
   spell: {fileID: 1161953743309226}
   scaleFactor: 0.71

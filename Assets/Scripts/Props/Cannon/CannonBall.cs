@@ -26,7 +26,8 @@ public class CannonBall : PooledObjectBehavior {
 
     Vector3 smokeInitialScale;
     float scale;
-
+    [SerializeField]
+    float life;
     override protected void Awake()
     {
         ballRigidBody = GetComponent<Rigidbody>();
@@ -36,6 +37,7 @@ public class CannonBall : PooledObjectBehavior {
     override protected void Start()
     {
         base.Start();
+       
         collide = false;
         //ballRigidBody.velocity = transform.forward * velocity * Time.deltaTime;
         

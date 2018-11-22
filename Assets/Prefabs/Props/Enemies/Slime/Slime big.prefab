@@ -576,7 +576,7 @@ MonoBehaviour:
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0
-  attackValue: 0
+  attackValue: 30
   healthBar: {fileID: 1191202077592242}
   manaBar: {fileID: 0}
   deadText: {fileID: 1631808369388324}
