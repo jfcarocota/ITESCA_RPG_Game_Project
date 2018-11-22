@@ -56,10 +56,14 @@ public abstract class Character3D : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected void Update () {
-        Move();
-        Rotate();
-        Attack();
-        Guard();
+        if (!MenuController.isPaused)
+        {
+            Move();
+            Rotate();
+            Attack();
+            Guard();
+        }
+        
     }
 
     protected virtual void Move()
