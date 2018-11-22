@@ -77,7 +77,7 @@ public class CannonBall : PooledObjectBehavior {
     {
         collide = false;
         if(scaleFactor != 0) {
-        smoke.transform.localScale = smokeInitialScale;
+            smoke.transform.localScale = smokeInitialScale;
         }
         base.ReturnObjectToPool();
     }
