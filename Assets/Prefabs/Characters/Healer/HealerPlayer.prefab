@@ -2855,6 +2855,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
   deadText: {fileID: 0}
+  partyNumber: 0
+  followDistance: 2
   healArea: {fileID: 114183399590272572}
   healManaCost: 10
 --- !u!135 &135272422016478362

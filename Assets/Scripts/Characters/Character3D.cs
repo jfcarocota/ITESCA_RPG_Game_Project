@@ -30,8 +30,13 @@ public abstract class Character3D : MonoBehaviour {
     protected Image manaBarValue;
     [SerializeField]
     GameObject deadText;
+    [SerializeField]
+    public int partyNumber;
 
     protected Animator animator;
+
+    [SerializeField]
+    protected float followDistance;
 
     private void Awake()
     {
@@ -52,18 +57,39 @@ public abstract class Character3D : MonoBehaviour {
             manaBarValue = manaBar.transform.GetChild(1).GetComponent<Image>();
             RefreshMana(0);
         }
+        //partyNumber = 0;
     }
 	
 	// Update is called once per frame
 	protected void Update () {
-        if (!MenuController.isPaused)
+        if (!MenuController.isPaused &&(tag != "Player" || (tag == "Player" && partyNumber == 0)))
         {
             Move();
             Rotate();
             Attack();
             Guard();
+            if(Input.GetButtonUp("Fire3") && tag == "Player")
+            {
+                Debug.Log("Swapperino");
+                PartyManager.SwapPartyMember();
+            }
         }
-        
+        else if(tag == "Player" && partyNumber > 0)
+        {
+            //follow the number blabla
+            if((transform.position - PartyManager.members[partyNumber - 1].transform.position).magnitude > followDistance)
+            {
+                MoveFollow();
+                animator.SetFloat("Velocity", 1f);
+            }
+            else
+            {
+                animator.SetFloat("Velocity", 0f);
+            }
+            //hay alguna manera mejor de hacer esto???
+                
+            RotateFollow(PartyManager.members[partyNumber - 1].transform);
+        }
     }
 
     protected virtual void Move()
@@ -85,6 +111,16 @@ public abstract class Character3D : MonoBehaviour {
     protected virtual void Guard()
     {
 
+    }
+
+    protected virtual void MoveFollow()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+    }
+
+    protected virtual void RotateFollow(Transform playerTransform)
+    {
+        transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
     }
 
     protected virtual void OnCollisionEnter(Collision collision)

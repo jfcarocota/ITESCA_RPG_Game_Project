@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114518879451818838}
   m_Layer: 0
   m_Name: Dummy2
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,6 +573,7 @@ MonoBehaviour:
   healthBar: {fileID: 1714767182186830}
   manaBar: {fileID: 0}
   deadText: {fileID: 1048808481734582}
+  partyNumber: 0
   startDamage: 75
   playerTransform: {fileID: 0}
   trackDistance: 0

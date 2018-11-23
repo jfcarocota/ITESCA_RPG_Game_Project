@@ -36,7 +36,7 @@ public class Healer : Character3D {
     protected override void Move()
     {
         base.Move();
-        animator.SetFloat("Walking", Mathf.Abs(Controllers.Axis.magnitude));
+        animator.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
     }
 
     /// <summary>
