@@ -36,8 +36,9 @@ public class Robot : Enemy {
         if (tracked && !isSteping && !isLasering) {
             animator.SetFloat("Speed", 1);
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            //agent.SetDestination(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
         }
-        if(!tracked) {
+        if (!tracked) {
             animator.SetFloat("Speed", 0);
         }
         if (trackedToStep && !isSteping && !isLasering) {

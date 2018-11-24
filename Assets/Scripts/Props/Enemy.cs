@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : Character3D {
 
     [Range(0, 99)]
     public int startDamage;
 
+
     [SerializeField]
     protected Transform playerTransform;
+    [SerializeField]
+    NavMeshAgent agent;
     protected float distanceToPlayer;
     protected bool tracked;
     [SerializeField]
@@ -48,6 +52,7 @@ public class Enemy : Character3D {
     protected override void Move() {
         if (tracked) {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            //agent.SetDestination(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
         }
     }
 
