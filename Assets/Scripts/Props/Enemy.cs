@@ -64,7 +64,7 @@ public class Enemy : Character3D {
         }
     }
 
-    protected virtual void Knockback() {
+    public virtual void Knockback() {
         Vector3 knockbak = transform.position - playerTransform.position;
         rb.AddForce(knockbak.normalized * knockbackForce, ForceMode.Impulse);
     }

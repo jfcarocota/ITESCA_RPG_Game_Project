@@ -24,7 +24,7 @@ public class CannonBall : PooledObjectBehavior {
     [SerializeField, Range(-10, 10)]
     float smokeStartDecresingTime;
 
-    Vector3 smokeInitialScale;
+    //Vector3 smokeInitialScale;
     float scale;
     [SerializeField]
     float life;
@@ -76,9 +76,9 @@ public class CannonBall : PooledObjectBehavior {
     override protected void ReturnObjectToPool()
     {
         collide = false;
-        if(scaleFactor != 0) {
+        /*if(scaleFactor != 0) {
             smoke.transform.localScale = smokeInitialScale;
-        }
+        }*/
         base.ReturnObjectToPool();
     }
 }
