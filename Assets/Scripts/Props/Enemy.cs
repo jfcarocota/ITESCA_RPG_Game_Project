@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using GameCore.ObjectPooler;
 
 public class Enemy : Character3D {
 
     [Range(0, 99)]
     public int startDamage;
-
-
+    
     [SerializeField]
     protected Transform playerTransform;
     [SerializeField]
@@ -21,10 +21,13 @@ public class Enemy : Character3D {
     [SerializeField, Range(0,10)]
     float knockbackForce;
 
+    ObjectPooler objectPooler;
+
     override protected void Start() {
         base.Start();
         RefreshHealth((float)-startDamage);
         StartCoroutine(CheckProximityToPlayer());
+        objectPooler = ObjectPooler.Instance;
     }
 
     protected override void OnCollisionEnter(Collision collision) {
@@ -75,6 +78,7 @@ public class Enemy : Character3D {
     }
 
     protected virtual void OnDeath() {
+        objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
         Destroy(gameObject);
     }
 

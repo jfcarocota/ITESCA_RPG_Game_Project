@@ -60,4 +60,7 @@ MonoBehaviour:
     size: 5
   - tag: SpellDissolve
     prefab: {fileID: 1855303974489362, guid: 4387b8a585470244f8312f98f0ca0bfb, type: 2}
-    size: 8
+    size: 5
+  - tag: EnemyExplosion
+    prefab: {fileID: 1899205969847916, guid: c9bcbd4237663254f993b569947eaf50, type: 2}
+    size: 5

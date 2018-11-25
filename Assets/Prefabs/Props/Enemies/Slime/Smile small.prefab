@@ -614,12 +614,15 @@ MonoBehaviour:
   maxManaValue: 0
   movementSpeed: 3
   guardValue: 0
-  attackValue: 10
+  attackValue: 2.5
   healthBar: {fileID: 1221291808752626}
   manaBar: {fileID: 0}
   deadText: {fileID: 1541452376702858}
+  partyNumber: 0
+  followDistance: 0
   startDamage: 0
   playerTransform: {fileID: 0}
+  agent: {fileID: 0}
   trackDistance: 8
   knockbackForce: 5.57
   jumpForce: 5.5

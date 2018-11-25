@@ -32,6 +32,7 @@ namespace GameCore {
                     Queue<GameObject> objectPool = new Queue<GameObject>();
                     for (int i = 0; i < pool.size; i++) {
                         GameObject obj = Instantiate(pool.prefab);
+                        obj.transform.parent = transform;
                         obj.SetActive(false);
                         objectPool.Enqueue(obj);
                     }
@@ -59,7 +60,7 @@ namespace GameCore {
                     obj.SetActive(true);
                     obj.transform.position = position;
                     obj.transform.rotation = rotation;
-                    obj.transform.parent = parent;
+                    if(parent != null) obj.transform.parent = parent;
                 }
                 return;
             }
