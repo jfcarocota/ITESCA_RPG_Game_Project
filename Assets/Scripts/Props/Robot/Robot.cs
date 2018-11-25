@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable 0649
+
 public class Robot : Enemy {
 
     [SerializeField]
-    GameObject footColliderGO;
-    //SphereCollider footCollider;
+    GameObject player;
+
+    [SerializeField]
+    GameObject foot;
+    [SerializeField]
+    GameObject stepParticles;
+    Vector3 stepParticlesInitScale;
     [SerializeField]
     float trackDistanceToStep;
     bool trackedToStep;
     bool isSteping;
+    [SerializeField]
+    float stepParticlesIncreasingScale;
+    float trackDistanceToStepHit;
+    bool trackedToStepHit;
+    bool stepParticlesOn;
 
     [SerializeField]
     GameObject lasers;
@@ -20,23 +32,29 @@ public class Robot : Enemy {
     float maxTrackDistanceToLaser;
     bool trackedToLaser;
     bool isLasering;
+    [SerializeField]
+    GameObject redEyeRight, redEyeLeft;
+    Vector3 redEyeFinalScale;
 
     float originalMovementSpeed;
 
     protected override void Start() {
         base.Start();
         originalMovementSpeed = movementSpeed;
-        //footCollider = footColliderGO.GetComponentInChildren<SphereCollider>();
         trackedToStep = false;
         isSteping = false;
+        stepParticlesOn = false;
+        stepParticlesInitScale = stepParticles.transform.localScale;
         StartCoroutine(CheckProximityToPlayerForStep());
+        redEyeFinalScale = redEyeRight.transform.localScale;
+        redEyeRight.transform.localScale = Vector3.zero;
+        redEyeLeft.transform.localScale = Vector3.zero;
     }
 
     protected override void Move() {
         if (tracked && !isSteping && !isLasering) {
             animator.SetFloat("Speed", 1);
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            //agent.SetDestination(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
         }
         if (!tracked) {
             animator.SetFloat("Speed", 0);
@@ -50,10 +68,38 @@ public class Robot : Enemy {
         if (healthValue <= 0) {
             OnDeath();
         }
+        if (stepParticlesOn) {
+            stepParticles.transform.localScale += Vector3.one * stepParticlesIncreasingScale * Time.deltaTime;
+            if (!trackedToStepHit) {
+                float distance = Vector3.Distance(foot.transform.position, playerTransform.position);
+                trackDistanceToStepHit = stepParticles.transform.localScale.x;
+                trackedToStepHit = distance < trackDistanceToStepHit;
+                if (trackedToStepHit) {
+                    Vector3 knockbak = playerTransform.position - foot.transform.position;
+                    knockbak = new Vector3(knockbak.x, 0f, knockbak.z);
+                    knockbak = knockbak.normalized;
+                    player.GetComponent<Rigidbody>().AddForce(knockbak * 4 + Vector3.up * 4, ForceMode.Impulse);
+                    player.gameObject.GetComponent<DamageMage>().RefreshHealth(-attackValue);
+                }
+            }
+        }
+        if (isLasering) {
+            if (redEyeRight.transform.localScale.x < redEyeFinalScale.x) {
+                redEyeRight.transform.localScale += Vector3.one * Time.deltaTime * .06f;
+                redEyeLeft.transform.localScale += Vector3.one * Time.deltaTime * .06f;
+            }
+        }
     }
 
+    /*private void OnDrawGizmos() {
+        if (stepParticlesOn) {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(foot.transform.position, transform.forward * stepParticles.transform.localScale.x);
+        }
+    }*/
+
     protected override void Rotate() {
-        if (tracked && !isSteping && !isLasering) {
+        if (tracked && !isLasering) {
             transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
         }
     }
@@ -69,11 +115,15 @@ public class Robot : Enemy {
         //poner animacion idle
         animator.SetFloat("Speed", 0);
         //activar la hitbox y animacion del polvo
-        footColliderGO.SetActive(true);
+        foot.SetActive(true);
+        stepParticlesOn = true;
         //esperar parado un ratin
         yield return new WaitForSeconds(.6f);
         //desactivar la hitbox y animacion del polvo
-        footColliderGO.SetActive(false);
+        foot.SetActive(false);
+        stepParticlesOn = false;
+        trackedToStepHit = false;
+        stepParticles.transform.localScale = stepParticlesInitScale;
         //poner velocidad
         animator.SetFloat("Speed", 1);
         movementSpeed = originalMovementSpeed;
@@ -97,25 +147,17 @@ public class Robot : Enemy {
         animator.SetTrigger("LaserOff");
         movementSpeed = originalMovementSpeed;
         isLasering = false;
+        redEyeRight.transform.localScale = Vector3.zero;
+        redEyeLeft.transform.localScale = Vector3.zero;
     }
 
     IEnumerator CheckProximityToPlayerForStep() {
         for (; ; ) {
             float distance = Vector3.Distance(transform.position, playerTransform.position);
-            print(distance);
             trackedToStep = distance < trackDistanceToStep;
             trackedToLaser = distance < maxTrackDistanceToLaser && distance > minTrackDistanceToLaser;
             yield return new WaitForSeconds(.5f);
         }
     }
-
-
-    protected override void OnCollisionEnter(Collision collision) {
-
-    }
-
-    protected override void OnTriggerEnter(Collider other) {
-
-    }
-
+    
 }
