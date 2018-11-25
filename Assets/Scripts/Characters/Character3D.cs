@@ -62,7 +62,7 @@ public abstract class Character3D : MonoBehaviour {
 	
 	// Update is called once per frame
 	protected void Update () {
-        if (!MenuController.isPaused &&(tag != "Player" || (tag == "Player" && partyNumber == 0)))
+        if (!MenuController.isPaused && (tag != "Player" || (tag == "Player" && partyNumber == 0)))
         {
             Move();
             Rotate();
