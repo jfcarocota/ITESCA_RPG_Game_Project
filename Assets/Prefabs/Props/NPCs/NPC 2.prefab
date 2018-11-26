@@ -230,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4691106099813204}
   - component: {fileID: 95672132074856286}
+  - component: {fileID: 65957226619706566}
   m_Layer: 0
   m_Name: NPC 2
   m_TagString: Untagged
@@ -442,22 +443,6 @@ GameObject:
   - component: {fileID: 4542448539611644}
   m_Layer: 0
   m_Name: pasted__HeelR
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1255428128965784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4503208676427852}
-  - component: {fileID: 20976353639226274}
-  m_Layer: 0
-  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1698,7 +1683,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.010551843, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4691106099813204}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4118576627619548
 Transform:
@@ -2169,7 +2154,7 @@ Transform:
   m_Children:
   - {fileID: 4958258024204094}
   m_Father: {fileID: 4691106099813204}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4482253539398538
 Transform:
@@ -2226,19 +2211,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4744031511656458}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4503208676427852
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255428128965784}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1000.1, y: 1.6427792, z: 0.30883116}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 4691106099813204}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4503589009734862
 Transform:
@@ -2582,21 +2554,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108643909211612}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.545127, y: -0.16392827, z: 6.0938654}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 5.7252183, y: 0.11, z: 23.256065}
+  m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
   m_Children:
   - {fileID: 4593058619973480}
   - {fileID: 4806415849571894}
   - {fileID: 4996499067844668}
   - {fileID: 4686231817938480}
   - {fileID: 4833896787486630}
-  - {fileID: 4503208676427852}
   - {fileID: 4475388092657320}
   - {fileID: 4111167794840722}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4711079883758336
 Transform:
   m_ObjectHideFlags: 1
@@ -3000,46 +2971,18 @@ Transform:
   m_Father: {fileID: 4118576627619548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20976353639226274
-Camera:
+--- !u!65 &65957226619706566
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1255428128965784}
+  m_GameObject: {fileID: 1108643909211612}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 2
-  m_SensorSize: {x: 35.999928, y: 23.999952}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 35
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.1
-  far clip plane: 6000
-  field of view: 37.84922
-  orthographic: 0
-  orthographic size: 347.55313
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
+  m_Size: {x: 1.8476251, y: 6.2641563, z: 1}
+  m_Center: {x: -0.0048428774, y: 2.8381238, z: 0}
 --- !u!95 &95672132074856286
 Animator:
   serializedVersion: 3

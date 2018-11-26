@@ -980,6 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4285012468983012}
   - component: {fileID: 95157104519570160}
+  - component: {fileID: 65540445893551992}
   m_Layer: 0
   m_Name: NPC 3
   m_TagString: Untagged
@@ -1012,22 +1013,6 @@ GameObject:
   - component: {fileID: 4670521270685014}
   m_Layer: 0
   m_Name: pasted__C_Shoulder_L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1709726792152962
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4521511615737284}
-  - component: {fileID: 20726546991671224}
-  m_Layer: 0
-  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2024,21 +2009,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1670345971097406}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.959245, y: -0.16392827, z: 3.6420956}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -4.68, y: -0.6342254, z: -24.723}
+  m_LocalScale: {x: 0.28, y: 0.28, z: 0.28}
   m_Children:
   - {fileID: 4677165109327328}
   - {fileID: 4748357440521360}
   - {fileID: 4240096198898296}
   - {fileID: 4834003715233738}
   - {fileID: 4684797499272810}
-  - {fileID: 4521511615737284}
   - {fileID: 4533126240133540}
   - {fileID: 4492897180769808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4319225364475192
 Transform:
   m_ObjectHideFlags: 1
@@ -2326,20 +2310,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.010551843, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4285012468983012}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4521511615737284
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709726792152962}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1000.1, y: 1.6427792, z: 0.30883116}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 4285012468983012}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4533126240133540
 Transform:
@@ -2353,7 +2324,7 @@ Transform:
   m_Children:
   - {fileID: 4158327323026556}
   m_Father: {fileID: 4285012468983012}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4559193827301702
 Transform:
@@ -3000,46 +2971,18 @@ Transform:
   m_Father: {fileID: 4797413947157082}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20726546991671224
-Camera:
+--- !u!65 &65540445893551992
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709726792152962}
+  m_GameObject: {fileID: 1670345971097406}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 2
-  m_SensorSize: {x: 35.999928, y: 23.999952}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 35
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.1
-  far clip plane: 6000
-  field of view: 37.84922
-  orthographic: 0
-  orthographic size: 347.55313
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
+  m_Size: {x: 1.8476251, y: 6.2641563, z: 1}
+  m_Center: {x: -0.0048428774, y: 2.8381238, z: 0}
 --- !u!95 &95157104519570160
 Animator:
   serializedVersion: 3

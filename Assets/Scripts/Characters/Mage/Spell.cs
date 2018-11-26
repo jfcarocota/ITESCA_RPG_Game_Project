@@ -55,7 +55,7 @@ public class Spell : PooledObjectBehavior {
     }
     
     private void OnTriggerEnter(Collider other) {
-        if (other.tag != "FollowEnemyTrigger") {
+        if (other.tag != "Player" && other.tag != "NPC" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup") {
             collide = true;
             speelRigidBody.velocity = Vector3.zero;
             objectPooler.GetObjectFromPool("SpellDissolve", lastPosition, transform.rotation, null);

@@ -16,6 +16,7 @@ TagManager:
   - FollowEnemyTrigger
   - Wall
   - Skeley
+  - NPC
   layers:
   - Default
   - TransparentFX

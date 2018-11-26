@@ -35,7 +35,7 @@ public class Slime : Enemy {
     protected override void OnCollisionEnter(Collision collision) {
         base.OnCollisionEnter(collision);
         if (collision.gameObject.tag == "Player") {
-            Vector3 knockbak = playerTransform.position - transform.position;
+            Vector3 knockbak = player.transform.position - transform.position;
             knockbak = new Vector3(knockbak.x, 0f, knockbak.z);
             knockbak = knockbak.normalized;
             collision.gameObject.GetComponent<Rigidbody>().AddForce(knockbak * 4 + Vector3.up * 2, ForceMode.Impulse);
@@ -68,7 +68,7 @@ public class Slime : Enemy {
             for (int i = 0; i < 2; i++) {
                 go = Instantiate(slimesToInstantiate, transform.position, transform.rotation);
                 go.GetComponent<Rigidbody>().AddForce( (i == 0? 2f : -2f) * transform.right + Vector3.up * 3, ForceMode.Impulse);
-                go.GetComponent<Slime>().playerTransform = playerTransform;
+                go.GetComponent<Slime>().player = player;
             }
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 using GameCore.SystemMovements;
 using UnityEngine.UI;
 using GameCore.ObjectPooler;
+using GameCore.TalkSystem;
 
 [RequireComponent(typeof(Animator))]
 public abstract class Character3D : MonoBehaviour {
@@ -38,6 +39,7 @@ public abstract class Character3D : MonoBehaviour {
     protected float followDistance;
 
     protected ObjectPooler objectPooler;
+    private TalkSystem talkSystem;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -46,6 +48,7 @@ public abstract class Character3D : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         objectPooler = ObjectPooler.Instance;
+        talkSystem = TalkSystem.Instance;
         rb = GetComponent<Rigidbody>();
         healthBarValue = healthBar.transform.GetChild(1).GetComponent<Image>();
         healthValue = maxHealthValue;
@@ -141,6 +144,18 @@ public abstract class Character3D : MonoBehaviour {
         }
         else if (other.tag == "Skeley") {
             RefreshHealth(-other.transform.GetComponentInParent<Character3D>().attackValue);
+        }
+        else if (other.tag == "NPC") {
+            print(other.name);
+            other.gameObject.SetActive(false);
+            switch (other.name) {
+                case "NPC_trigger_1": talkSystem.ShowDialog(0); break;
+                case "NPC_trigger_2": talkSystem.ShowDialog(1); break;
+                case "NPC_trigger_3": talkSystem.ShowDialog(2); break;
+                case "NPC_trigger_4": talkSystem.ShowDialog(3); break;
+                case "NPC_trigger_5": talkSystem.ShowDialog(4); break;
+                case "NPC_trigger_6": talkSystem.ShowDialog(5); break;
+            }
         }
         /*else if (other.tag == "Damage") {
             RefreshHealth(-100f);

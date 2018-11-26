@@ -5,10 +5,7 @@ using UnityEngine;
 #pragma warning disable 0649
 
 public class Robot : Enemy {
-
-    [SerializeField]
-    GameObject player;
-
+    
     [SerializeField]
     GameObject foot;
     [SerializeField]
@@ -35,6 +32,9 @@ public class Robot : Enemy {
     [SerializeField]
     GameObject redEyeRight, redEyeLeft;
     Vector3 redEyeFinalScale;
+
+    [SerializeField]
+    GameObject beforeRobot, afterRobot;
 
     float originalMovementSpeed;
 
@@ -73,11 +73,11 @@ public class Robot : Enemy {
         if (stepParticlesOn) {
             stepParticles.transform.localScale += Vector3.one * stepParticlesIncreasingScale * Time.deltaTime;
             if (!trackedToStepHit) {
-                float distance = Vector3.Distance(foot.transform.position, playerTransform.position);
+                float distance = Vector3.Distance(foot.transform.position, player.transform.position);
                 trackDistanceToStepHit = stepParticles.transform.localScale.x;
                 trackedToStepHit = distance < trackDistanceToStepHit;
                 if (trackedToStepHit) {
-                    Vector3 knockbak = playerTransform.position - foot.transform.position;
+                    Vector3 knockbak = player.transform.position - foot.transform.position;
                     knockbak = new Vector3(knockbak.x, 0f, knockbak.z);
                     knockbak = knockbak.normalized;
                     player.GetComponent<Rigidbody>().AddForce(knockbak * 4 + Vector3.up * 4, ForceMode.Impulse);
@@ -102,7 +102,7 @@ public class Robot : Enemy {
 
     protected override void Rotate() {
         if (tracked && !isLasering) {
-            transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
+            transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         }
     }
 
@@ -153,9 +153,15 @@ public class Robot : Enemy {
         redEyeLeft.transform.localScale = Vector3.zero;
     }
 
+    protected override void OnDeath() {
+        beforeRobot.SetActive(false);
+        afterRobot.SetActive(true);
+        base.OnDeath();
+    }
+
     IEnumerator CheckProximityToPlayerForStep() {
         for (; ; ) {
-            float distance = Vector3.Distance(transform.position, playerTransform.position);
+            float distance = Vector3.Distance(transform.position, player.transform.position);
             trackedToStep = distance < trackDistanceToStep;
             trackedToLaser = distance < maxTrackDistanceToLaser && distance > minTrackDistanceToLaser;
             yield return new WaitForSeconds(.5f);

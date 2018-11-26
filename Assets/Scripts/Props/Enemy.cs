@@ -9,8 +9,7 @@ public class Enemy : Character3D {
     [Range(0, 99)]
     public int startDamage;
     
-    [SerializeField]
-    protected Transform playerTransform;
+    protected GameObject player;
     [SerializeField]
     NavMeshAgent agent;
     protected float distanceToPlayer;
@@ -24,7 +23,7 @@ public class Enemy : Character3D {
     override protected void Start() {
         base.Start();
         RefreshHealth((float)-startDamage);
-        playerTransform = PartyManager.members[0].transform;
+        player = PartyManager.members[0];
         StartCoroutine(CheckProximityToPlayer());
         StartCoroutine(CheckLeader());
     }
@@ -60,19 +59,19 @@ public class Enemy : Character3D {
 
     protected override void Rotate() {
         if (tracked) {
-            transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
+            transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         }
     }
     
     IEnumerator CheckProximityToPlayer() {
         for (;;) {
-            tracked = Vector3.Distance(transform.position, playerTransform.position) < trackDistance;
+            tracked = Vector3.Distance(transform.position, player.transform.position) < trackDistance;
             yield return new WaitForSeconds(.5f);
         }
     }
 
     public virtual void Knockback() {
-        Vector3 knockbak = transform.position - playerTransform.position;
+        Vector3 knockbak = transform.position - player.transform.position;
         rb.AddForce(knockbak.normalized * knockbackForce, ForceMode.Impulse);
     }
 
@@ -83,7 +82,7 @@ public class Enemy : Character3D {
 
     IEnumerator CheckLeader() {
         do {
-            playerTransform = PartyManager.members[0].transform;
+            player = PartyManager.members[0];
             yield return new WaitForSeconds(.1f);
         } while (PartyManager.members.Length > 0);
     }

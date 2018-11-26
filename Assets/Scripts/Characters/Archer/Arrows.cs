@@ -19,7 +19,7 @@ public class Arrows : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other){
-		if (other.tag != "Player" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup") {
+		if (other.tag != "Player" && other.tag != "NPC" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup") {
 			rb.velocity = Vector3.zero;
 			rb.useGravity = false;
 			objectPooler.ReturnObjectToPool ("Arrow", gameObject);

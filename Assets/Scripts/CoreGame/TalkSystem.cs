@@ -8,6 +8,13 @@ namespace GameCore {
     namespace TalkSystem {
         public class TalkSystem : MonoBehaviour {
 
+            #region Singleton
+            public static TalkSystem Instance;
+            private void Awake() {
+                Instance = this;
+            }
+            #endregion
+
             [SerializeField]
             GameObject dialogBox;
             [SerializeField]
@@ -20,10 +27,28 @@ namespace GameCore {
             List<string> dialogs;
             string[] splitDialog;
             int currentDialogPos;
-            
+
+            bool win;
+            [SerializeField]
+            GameObject winScreen;
+
             void Start() {
+                win = false;
                 dialogs = new List<string>();
-                dialogs.Add("00Hey muy buenas a todos|00Aqui Willyrex comentando|00Y hoy os traigo un nuevo gueimplei del maincra");
+                dialogs.Add("02El Brayan Daniel:\nTa cabrón que el único ****** baño del pueblo este atrás de tu casa >:(|"
+                    + "02El Brayan Daniel:\nApesta bien ****** pero no puedo lavarlo por que hay un esqueleto cerca del pozo :(");
+                dialogs.Add("03Chin Wong Tong:\n¡HAAAAAAY NARANJAS! ¡SEÑORA, SEÑOR, LA NARANJA! ¡LA MÁS GRANDE, LA MAS JUGOSA! ¡LA MÁS DULCE, SABROSA, RIQUISIMA LA NARANJA!|" 
+                    + "03Chin Wong Tong:\n¡Oigan amigos! ¡Oigan amigos! ¡¿No quieren unas naranjas?!|" 
+                    + "03Chin Wong Tong:\n¡Son tan buenas que acabamos de enviar un carrito al pueblo vecino!");
+                dialogs.Add("01Regina Stevens:\n¡Aventureros :o! No se ven muchos por estos rumbos. En especial una party tan variada *smirk*|"
+                    + "01Regina Stevens:\nDebido a eso el bosque cercano se encuentra infestado de monstruos :(");
+                dialogs.Add("00Guillermo Padrés:\n¡Oh, aventureros! ¡El H. Ayuntamiento del Pueblo les da las gracias por matar a ese esqueleto!|"
+                    + "00Guillermo Padrés:\n¡Tres palmadas de recompensa! *Clap, clap, clap*");
+                dialogs.Add("04Pancho Pérez:\n¡Ay caramba D:! ¡Aventureros, no vayan para allá!|"
+                    + "04Pancho Pérez:\n¡Hay una máquina gigante destruyendo todo!|"
+                    + "04Pancho Pérez:\n!Me dió tanto miedo que me voy cagando al pueblo!");
+                dialogs.Add("04Pancho Pérez:\n¿Qué? ¿Mataron a todos los monstruos?|"
+                    + "04Pancho Pérez:\n¡Oh, vaya! ¡Gracias por salvarme :'D!");
             }
 
             private void Update() {
@@ -40,6 +65,8 @@ namespace GameCore {
                 currentDialogPos = 0;
                 displayImage.sprite = characterImages[int.Parse(splitDialog[currentDialogPos].Substring(0, 2))];
                 displayText.text = splitDialog[currentDialogPos++].Substring(2);
+
+                if (index == 5) win = true;
             }
 
             void AdvanceDialog() {
@@ -53,13 +80,13 @@ namespace GameCore {
             }
 
             void CloseDialog() {
-                MenuController.isPaused = false;
-
                 dialogBox.SetActive(false);
-            }
-
-            private void OnTriggerEnter(Collider other) {
-                ShowDialog(0);
+                if (win) {
+                    winScreen.SetActive(true);
+                }
+                else {
+                    MenuController.isPaused = false;
+                }
             }
 
         }
