@@ -134,7 +134,7 @@ public class WarriorMan : Character3D
     override protected void OnCollisionEnter(Collision other)
     {
         base.OnCollisionEnter(other);
-        Debug.Log("Collision: " + other.collider.name + " Padre: " + other.transform.root.name + " Objeto tocado: " + this.name);
+        //Debug.Log("Collision: " + other.collider.name + " Padre: " + other.transform.root.name + " Objeto tocado: " + this.name);
     }
     public void SetCollidersStatus(bool active, string Collider)
     {

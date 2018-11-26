@@ -33,8 +33,7 @@ namespace GameCore {
             }
 
             public void ShowDialog(int index) {
-                //aqui ponerle la pausa al juego
-                //Time.timeScale = 0;
+                MenuController.isPaused = true;
 
                 dialogBox.SetActive(true);
                 splitDialog = dialogs[index].Split('|');
@@ -54,8 +53,7 @@ namespace GameCore {
             }
 
             void CloseDialog() {
-                //aqui quitarle la pausa al juego
-                //Time.timeScale = 1;
+                MenuController.isPaused = false;
 
                 dialogBox.SetActive(false);
             }

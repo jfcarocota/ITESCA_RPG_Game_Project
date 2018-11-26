@@ -21,7 +21,7 @@ public class PartyManager: MonoBehaviour {
             player.GetComponent<Character3D>().partyNumber = i++;
         }
         members = new GameObject[] {new GameObject(), new GameObject(), new GameObject(), new GameObject(), new GameObject()};
-        Debug.Log(partyMembers);
+        //Debug.Log(partyMembers);
         members = partyMembers.ToArray();
         canSwap = true;
         StartCoroutine(WaitToSwap());
