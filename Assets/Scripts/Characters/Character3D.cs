@@ -60,6 +60,7 @@ public abstract class Character3D : MonoBehaviour {
             manaBar.SetActive(true);
             manaBarValue = manaBar.transform.GetChild(1).GetComponent<Image>();
             RefreshMana(0);
+            StartCoroutine(ManaRegen());
         }
         //partyNumber = 0;
     }
@@ -148,6 +149,8 @@ public abstract class Character3D : MonoBehaviour {
         else if (other.tag == "NPC") {
             print(other.name);
             other.gameObject.SetActive(false);
+            talkSystem.ShowDialog(int.Parse(other.name.Split('_')[2]) - 1);
+            /*
             switch (other.name) {
                 case "NPC_trigger_1": talkSystem.ShowDialog(0); break;
                 case "NPC_trigger_2": talkSystem.ShowDialog(1); break;
@@ -156,6 +159,7 @@ public abstract class Character3D : MonoBehaviour {
                 case "NPC_trigger_5": talkSystem.ShowDialog(4); break;
                 case "NPC_trigger_6": talkSystem.ShowDialog(5); break;
             }
+            */
         }
         /*else if (other.tag == "Damage") {
             RefreshHealth(-100f);
@@ -193,5 +197,14 @@ public abstract class Character3D : MonoBehaviour {
         manaBarValue.fillAmount = (float)manaValue / maxManaValue;
 
         return true;
+    }
+
+    IEnumerator ManaRegen()
+    {
+        while (true)
+        {
+            RefreshMana(5);
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

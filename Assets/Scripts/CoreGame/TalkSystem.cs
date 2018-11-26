@@ -29,8 +29,6 @@ namespace GameCore {
             int currentDialogPos;
 
             bool win;
-            [SerializeField]
-            GameObject winScreen;
 
             void Start() {
                 win = false;
@@ -82,7 +80,8 @@ namespace GameCore {
             void CloseDialog() {
                 dialogBox.SetActive(false);
                 if (win) {
-                    winScreen.SetActive(true);
+                    MenuController.gameCleared = true;
+                    MenuController.deadScreen = true;
                 }
                 else {
                     MenuController.isPaused = false;

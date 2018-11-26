@@ -26,6 +26,7 @@ public abstract class MenuController : MonoBehaviour {
 
     protected bool canPause;
 
+    public static bool gameCleared;
     public static bool deadScreen;
     private TimeManager tm;
     private bool initialDeadCount;
@@ -41,8 +42,9 @@ public abstract class MenuController : MonoBehaviour {
 
     private Image blackScreen;
     private Text redText;
+    private Text winText;
     private Outline outlineText;
-
+    private Outline outlineTextWin;
 
     // Use this for initialization
     void Awake () {
@@ -53,8 +55,11 @@ public abstract class MenuController : MonoBehaviour {
         finalDeadCount = false;
         deadScreenCount = false;
         blackScreen = deadScreenGO.GetComponent<Image>();
-        redText = deadScreenGO.GetComponentInChildren<Text>();
-        outlineText = deadScreenGO.GetComponentInChildren<Outline>();
+        redText = deadScreenGO.GetComponentsInChildren<Text>()[0];
+        outlineText = deadScreenGO.GetComponentsInChildren<Outline>()[0];
+        winText = deadScreenGO.GetComponentsInChildren<Text>()[1];
+        outlineTextWin = deadScreenGO.GetComponentsInChildren<Outline>()[1];
+
     }
 
     private void Start()
@@ -123,7 +128,19 @@ public abstract class MenuController : MonoBehaviour {
                 tm.StartTime(fadeInTime);
                 deadScreenGO.SetActive(true);
                 blackScreen.color = new Color(1f, 1f, 1f, 0f);
-                redText.color = new Color(170f / 255f, 0f, 0f, 0f);
+                if (!gameCleared)
+                {
+                    winText.gameObject.SetActive(false);
+                    redText.color = new Color(170f / 255f, 0f, 0f, 0f);
+                }
+                else
+                {
+                    redText.gameObject.SetActive(false);
+                    winText.color = new Color(230f / 255f, 240f / 255f, 75f / 255f, 0f);
+                    deadTextTime = deadTextTime * 4;
+                }
+                    
+
             }
             else if (initialDeadCount)
             {
@@ -220,21 +237,44 @@ public abstract class MenuController : MonoBehaviour {
     {
         blackScreen.color = new Color(0f,0f,0f,
             blackScreen.color.a + (Time.deltaTime / fadeInTime) * 100f/255f);
-        redText.color = new Color(170f/255f, 0f,0f, 
-            redText.color.a + (Time.deltaTime / fadeInTime) );
-        outlineText.effectColor = new Color(1f, 1f, 1f,
-            outlineText.effectColor.a + (Time.deltaTime / fadeInTime));
+        if (!gameCleared)
+        {
+            redText.color = new Color(170f / 255f, 0f, 0f,
+                redText.color.a + (Time.deltaTime / fadeInTime));
+            outlineText.effectColor = new Color(1f, 1f, 1f,
+                outlineText.effectColor.a + (Time.deltaTime / fadeInTime));
+        }
+        else
+        {
+            winText.color = new Color(230f / 255f, 240f / 255f, 75f / 255f,
+                winText.color.a + (Time.deltaTime / fadeInTime));
+            outlineText.effectColor = new Color(1f, 1f, 1f,
+                outlineText.effectColor.a + (Time.deltaTime / fadeInTime));
+        }
+        
     }
 
     private void FadeOut()
     {
         blackScreen.color = new Color(0f, 0f, 0f,
            blackScreen.color.a + (Time.deltaTime / fadeInTime) * 155f/255f);
-        redText.color = new Color(redText.color.r - (Time.deltaTime / fadeInTime) * 170f/255f
-            , 0f, 0f);
-        outlineText.effectColor = new Color(outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
-            outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
-            outlineText.effectColor.r - (Time.deltaTime / fadeInTime));
+        if (!gameCleared)
+        {
+            redText.color = new Color(redText.color.r - (Time.deltaTime / fadeInTime) * 170f / 255f
+                , 0f, 0f);
+            outlineText.effectColor = new Color(outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
+                outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
+                outlineText.effectColor.r - (Time.deltaTime / fadeInTime));
+        }
+        else 
+        {
+            redText.color = new Color(redText.color.r - (Time.deltaTime / fadeInTime) * 230f / 255f,
+                redText.color.g - (Time.deltaTime / fadeInTime) * 240f / 255f,
+                redText.color.b - (Time.deltaTime / fadeInTime) * 75f / 255f);
+            outlineText.effectColor = new Color(outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
+                outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
+                outlineText.effectColor.r - (Time.deltaTime / fadeInTime));
+        }
     }
 
 }

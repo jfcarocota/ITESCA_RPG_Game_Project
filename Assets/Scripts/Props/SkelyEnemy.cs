@@ -25,17 +25,17 @@ public class SkelyEnemy : Enemy {
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (other.tag == "Spell")
+        if (other.tag == "Spell" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
         }
-        if (other.tag == "Arrow")
+        if (other.tag == "Arrow" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
         }
-        if (other.tag == "Damage")
+        if (other.tag == "Damage" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
@@ -54,6 +54,7 @@ public class SkelyEnemy : Enemy {
         
             
     }
+    
     protected override void Attack()
     {
         
