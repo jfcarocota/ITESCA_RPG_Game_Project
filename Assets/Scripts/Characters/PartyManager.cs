@@ -17,7 +17,7 @@ public class PartyManager: MonoBehaviour {
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
             partyMembers.Enqueue(player);
-            Debug.Log("Added: " + player.name + " PartyNumber: " + i);
+            //Debug.Log("Added: " + player.name + " PartyNumber: " + i);
             player.GetComponent<Character3D>().partyNumber = i++;
         }
         members = new GameObject[] {new GameObject(), new GameObject(), new GameObject(), new GameObject(), new GameObject()};
@@ -60,6 +60,23 @@ public class PartyManager: MonoBehaviour {
              * con esto ultimo deveria hacer un cambio suave.
             */
             vCam.Follow = vCam.LookAt = members[0].transform;
+        }
+    }
+
+    public static void DeletePartyMember(GameObject deadMember)
+    {
+        GameObject[] oldMembers = partyMembers.ToArray();
+        int oldSize = oldMembers.Length;
+        for(int i = 0; i < oldSize; i++)
+        {
+            partyMembers.Dequeue();
+        }
+        foreach (GameObject member in oldMembers)
+        {
+            if(member != deadMember)
+            {
+                partyMembers.Enqueue(member);
+            }
         }
     }
 
