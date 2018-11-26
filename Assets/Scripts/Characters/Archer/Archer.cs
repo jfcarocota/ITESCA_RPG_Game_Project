@@ -11,7 +11,7 @@ public class Archer : Character3D {
 	Animator anim;
 	[SerializeField]
 	GameObject arrowSpawner;
-	ObjectPooler objectPooler;
+
 	[SerializeField]
 	Text textArrows;
 	[SerializeField]
@@ -24,7 +24,6 @@ public class Archer : Character3D {
 
 	override protected void Start(){
 		base.Start ();
-        objectPooler = ObjectPooler.Instance;
         originalMovementSpeed = movementSpeed;
         contadorflechas = maxArrows;
 		textArrows.text = "x " + contadorflechas;

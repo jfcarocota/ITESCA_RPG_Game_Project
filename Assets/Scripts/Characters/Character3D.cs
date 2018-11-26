@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameCore.SystemMovements;
 using UnityEngine.UI;
+using GameCore.ObjectPooler;
 
 [RequireComponent(typeof(Animator))]
 public abstract class Character3D : MonoBehaviour {
@@ -36,13 +37,15 @@ public abstract class Character3D : MonoBehaviour {
     [SerializeField]
     protected float followDistance;
 
-    private void Awake()
-    {
+    protected ObjectPooler objectPooler;
+
+    private void Awake() {
         animator = GetComponent<Animator>();
     }
 
     // Use this for initialization
     protected virtual void Start () {
+        objectPooler = ObjectPooler.Instance;
         rb = GetComponent<Rigidbody>();
         healthBarValue = healthBar.transform.GetChild(1).GetComponent<Image>();
         healthValue = maxHealthValue;
@@ -68,7 +71,6 @@ public abstract class Character3D : MonoBehaviour {
             Guard();
             if(Input.GetButtonUp("Fire3") && tag == "Player")
             {
-                Debug.Log("Swapperino");
                 PartyManager.SwapPartyMember();
             }
         }
@@ -92,13 +94,12 @@ public abstract class Character3D : MonoBehaviour {
 
     protected virtual void Move()
     {
-        //Movement.MoveForward(rb, movementSpeed, transform);
         Movement.MoveTopDown(transform, movementSpeed);
     }
 
     protected virtual void Rotate()
     {
-        //Movement.RotateY(transform, rotationSpeed);
+
     }
 
     protected virtual void Attack()
@@ -141,9 +142,9 @@ public abstract class Character3D : MonoBehaviour {
         else if (other.tag == "Skeley") {
             RefreshHealth(-other.transform.GetComponentInParent<Character3D>().attackValue);
         }
-        else if (other.tag == "Damage") {
-            RefreshHealth(-20f);
-        }
+        /*else if (other.tag == "Damage") {
+            RefreshHealth(-100f);
+        }*/
     }
 
     public void RefreshHealth(float healthChange)
@@ -155,7 +156,9 @@ public abstract class Character3D : MonoBehaviour {
         healthBarValue.fillAmount = healthValue / maxHealthValue;
         if (healthValue <= 0)
         {
-            //morido
+            PartyManager.DeletePartyMember(gameObject);
+            objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
+            gameObject.SetActive(false);
         }
     }
 

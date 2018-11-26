@@ -10,13 +10,10 @@ public class DamageMage : Character3D {
     GameObject spellSpawner;
     [SerializeField, Range(0,100)]
     int manaSpell;
-
-    ObjectPooler objectPooler;
-
+    
     protected override void Start() {
         usesMana = true;
         base.Start();
-        objectPooler = ObjectPooler.Instance;
     }
 
     override protected void Move() {

@@ -33,15 +33,16 @@ public abstract class MenuController : MonoBehaviour {
     private bool finalDeadCount;
 
     [SerializeField]
-    protected float initialDeadTime;
+    protected float fadeInTime;
     [SerializeField]
-    protected float deadScreenTime;
+    protected float deadTextTime;
     [SerializeField]
-    protected float finalDeadTime;
+    protected float fadeOutTime;
 
     private Image blackScreen;
     private Text redText;
-    
+    private Outline outlineText;
+
 
     // Use this for initialization
     void Awake () {
@@ -51,8 +52,9 @@ public abstract class MenuController : MonoBehaviour {
         initialDeadCount = false;
         finalDeadCount = false;
         deadScreenCount = false;
-        //blackScreen = deadScreenGO.GetComponent<Image>();
-        //redText = deadScreenGO.GetComponentInChildren<Text>();
+        blackScreen = deadScreenGO.GetComponent<Image>();
+        redText = deadScreenGO.GetComponentInChildren<Text>();
+        outlineText = deadScreenGO.GetComponentInChildren<Outline>();
     }
 
     private void Start()
@@ -118,7 +120,7 @@ public abstract class MenuController : MonoBehaviour {
             {
                 deadScreen = false;
                 initialDeadCount = true;
-                tm.StartTime(initialDeadTime);
+                tm.StartTime(fadeInTime);
                 deadScreenGO.SetActive(true);
                 blackScreen.color = new Color(1f, 1f, 1f, 0f);
                 redText.color = new Color(170f / 255f, 0f, 0f, 0f);
@@ -132,7 +134,7 @@ public abstract class MenuController : MonoBehaviour {
                 {
                     initialDeadCount = false;
                     deadScreenCount = true;
-                    tm.StartTime(deadScreenTime);
+                    tm.StartTime(deadTextTime);
                 }
             }
             else if (deadScreenCount)
@@ -141,7 +143,7 @@ public abstract class MenuController : MonoBehaviour {
                 {
                     deadScreenCount = false;
                     finalDeadCount = true;
-                    tm.StartTime(finalDeadTime);
+                    tm.StartTime(fadeOutTime);
                 }
             }
             else if (finalDeadCount)
@@ -217,17 +219,22 @@ public abstract class MenuController : MonoBehaviour {
     private void FadeIn()
     {
         blackScreen.color = new Color(0f,0f,0f,
-            blackScreen.color.a + (Time.deltaTime / initialDeadTime) * 100f/255f);
+            blackScreen.color.a + (Time.deltaTime / fadeInTime) * 100f/255f);
         redText.color = new Color(170f/255f, 0f,0f, 
-            redText.color.a + (Time.deltaTime / initialDeadTime) );
+            redText.color.a + (Time.deltaTime / fadeInTime) );
+        outlineText.effectColor = new Color(1f, 1f, 1f,
+            outlineText.effectColor.a + (Time.deltaTime / fadeInTime));
     }
 
     private void FadeOut()
     {
         blackScreen.color = new Color(0f, 0f, 0f,
-           blackScreen.color.a + (Time.deltaTime / initialDeadTime) * 155f/255f);
-        redText.color = new Color(redText.color.r - (Time.deltaTime / initialDeadTime) * 170f/255f
+           blackScreen.color.a + (Time.deltaTime / fadeInTime) * 155f/255f);
+        redText.color = new Color(redText.color.r - (Time.deltaTime / fadeInTime) * 170f/255f
             , 0f, 0f);
+        outlineText.effectColor = new Color(outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
+            outlineText.effectColor.r - (Time.deltaTime / fadeInTime),
+            outlineText.effectColor.r - (Time.deltaTime / fadeInTime));
     }
 
 }

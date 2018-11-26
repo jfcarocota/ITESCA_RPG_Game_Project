@@ -49,6 +49,8 @@ public class Robot : Enemy {
         redEyeFinalScale = redEyeRight.transform.localScale;
         redEyeRight.transform.localScale = Vector3.zero;
         redEyeLeft.transform.localScale = Vector3.zero;
+        player = PartyManager.members[0];
+        StartCoroutine(CheckLeaderGO());
     }
 
     protected override void Move() {
@@ -91,12 +93,12 @@ public class Robot : Enemy {
         }
     }
 
-    /*private void OnDrawGizmos() {
+    private void OnDrawGizmos() {
         if (stepParticlesOn) {
             Gizmos.color = Color.green;
             Gizmos.DrawRay(foot.transform.position, transform.forward * stepParticles.transform.localScale.x);
         }
-    }*/
+    }
 
     protected override void Rotate() {
         if (tracked && !isLasering) {
@@ -160,4 +162,10 @@ public class Robot : Enemy {
         }
     }
     
+    IEnumerator CheckLeaderGO() {
+        do {
+            player = PartyManager.members[0];
+            yield return new WaitForSeconds(.1f);
+        } while (PartyManager.members.Length > 0);
+    }
 }

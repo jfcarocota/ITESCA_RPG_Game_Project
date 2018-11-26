@@ -20,15 +20,12 @@ public class Enemy : Character3D {
 
     [SerializeField, Range(0,10)]
     float knockbackForce;
-
-    ObjectPooler objectPooler;
-
+    
     override protected void Start() {
         base.Start();
         RefreshHealth((float)-startDamage);
         playerTransform = PartyManager.members[0].transform;
         StartCoroutine(CheckProximityToPlayer());
-        objectPooler = ObjectPooler.Instance;
         StartCoroutine(CheckLeader());
     }
 
@@ -85,10 +82,10 @@ public class Enemy : Character3D {
     }
 
     IEnumerator CheckLeader() {
-        while(true){
+        do {
             playerTransform = PartyManager.members[0].transform;
             yield return new WaitForSeconds(.1f);
-        }
+        } while (PartyManager.members.Length > 0);
     }
 
 }

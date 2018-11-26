@@ -23,11 +23,13 @@ public class PickupFloating : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Object rotation
-        transform.Rotate(0f, rotationSpeed, 0f);
-        //Object vertical movement
-        verticalTime += Time.deltaTime;
-        transform.position += Vector3.up * Mathf.Sin(verticalSpeed * verticalTime) * verticalSinInterval;
+        if (!MenuController.isPaused) {
+            //Object rotation
+            transform.Rotate(0f, rotationSpeed, 0f);
+            //Object vertical movement
+            verticalTime += Time.deltaTime;
+            transform.position += Vector3.up * Mathf.Sin(verticalSpeed * verticalTime) * verticalSinInterval;
+        }
     }
 
 

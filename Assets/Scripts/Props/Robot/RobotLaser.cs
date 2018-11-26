@@ -18,6 +18,8 @@ public class RobotLaser : MonoBehaviour {
     void Start () {
         laser = GetComponent<LineRenderer>();
         canHitAgain = true;
+        playerTransform = PartyManager.members[0].transform;
+        StartCoroutine(CheckLeader());
     }
 	
 	// Update is called once per frame
@@ -55,5 +57,12 @@ public class RobotLaser : MonoBehaviour {
         //transform.LookAt(transform.rotation, rotation, .4f);
         laserHitParticle.transform.position = transform.position;
         canHitAgain = true;
+    }
+
+    IEnumerator CheckLeader() {
+        do {
+            playerTransform = PartyManager.members[0].transform;
+            yield return new WaitForSeconds(.1f);
+        } while (PartyManager.members.Length > 0);
     }
 }
