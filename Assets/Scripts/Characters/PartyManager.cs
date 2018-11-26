@@ -68,7 +68,7 @@ public class PartyManager: MonoBehaviour {
         for (; ; )
         {
             canSwap = true;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.5f);
         }
     }
 

@@ -15,6 +15,7 @@ TagManager:
   - Spike
   - FollowEnemyTrigger
   - Wall
+  - Skeley
   layers:
   - Default
   - TransparentFX

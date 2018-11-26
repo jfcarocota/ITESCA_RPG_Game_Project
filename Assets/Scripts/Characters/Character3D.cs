@@ -29,8 +29,6 @@ public abstract class Character3D : MonoBehaviour {
     protected GameObject manaBar;
     protected Image manaBarValue;
     [SerializeField]
-    GameObject deadText;
-    [SerializeField]
     public int partyNumber;
 
     protected Animator animator;
@@ -140,8 +138,10 @@ public abstract class Character3D : MonoBehaviour {
             RefreshHealth(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
         }
-        else if (other.tag == "Damage")
-        {
+        else if (other.tag == "Skeley") {
+            RefreshHealth(-other.transform.GetComponentInParent<Character3D>().attackValue);
+        }
+        else if (other.tag == "Damage") {
             RefreshHealth(-20f);
         }
     }
@@ -155,7 +155,7 @@ public abstract class Character3D : MonoBehaviour {
         healthBarValue.fillAmount = healthValue / maxHealthValue;
         if (healthValue <= 0)
         {
-            deadText.SetActive(true);
+            //morido
         }
     }
 

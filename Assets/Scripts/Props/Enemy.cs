@@ -26,8 +26,10 @@ public class Enemy : Character3D {
     override protected void Start() {
         base.Start();
         RefreshHealth((float)-startDamage);
+        playerTransform = PartyManager.members[0].transform;
         StartCoroutine(CheckProximityToPlayer());
         objectPooler = ObjectPooler.Instance;
+        StartCoroutine(CheckLeader());
     }
 
     protected override void OnCollisionEnter(Collision collision) {
@@ -51,7 +53,7 @@ public class Enemy : Character3D {
             OnDeath();
         }
     }
-
+    
     protected override void Move() {
         if (tracked) {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
@@ -80,6 +82,13 @@ public class Enemy : Character3D {
     protected virtual void OnDeath() {
         objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
         Destroy(gameObject);
+    }
+
+    IEnumerator CheckLeader() {
+        while(true){
+            playerTransform = PartyManager.members[0].transform;
+            yield return new WaitForSeconds(.1f);
+        }
     }
 
 }

@@ -81,18 +81,16 @@ public class WarriorMan : Character3D
             Guarded = true;
             rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ |  RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
-        } else if (Controllers.GetFire(2, 2))
-            {
-                cooldown = true;
+        }
+        else if (Controllers.GetFire(2, 2))
+        {
+            cooldown = true;
             if (currentTime > shieldTime) {
                 animator.SetBool("Guard", false);
                 Guarded = false;
                 currentTime = 0;
             }
-                 
-            
-
-            }
+        }
 
         if (cooldown)
         {
@@ -101,7 +99,6 @@ public class WarriorMan : Character3D
 
         if (!animator.GetBool("Guard") && cooldown)
         {
-            
             if(currentTime > shieldTime)
             {
                 currentTime = 0;
@@ -114,8 +111,9 @@ public class WarriorMan : Character3D
     protected override void OnTriggerEnter(Collider other)
     {
 
-     //  Debug.Log("Collider: "+other.name+ " Padre: " + other.transform.root.name+ " Objeto tocado: "+this.name);
-      //  Debug.Log("Collider: " + other.tag + " Padre tag: " + other.transform.root.tag + " Objeto tocado: " + this.tag);
+        base.OnTriggerEnter(other);
+        //  Debug.Log("Collider: "+other.name+ " Padre: " + other.transform.root.name+ " Objeto tocado: "+this.name);
+        //  Debug.Log("Collider: " + other.tag + " Padre tag: " + other.transform.root.tag + " Objeto tocado: " + this.tag);
 
         if (other.tag == "Damage"  && (this.name != other.transform.root.name))
         {

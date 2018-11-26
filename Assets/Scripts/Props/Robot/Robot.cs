@@ -79,7 +79,7 @@ public class Robot : Enemy {
                     knockbak = new Vector3(knockbak.x, 0f, knockbak.z);
                     knockbak = knockbak.normalized;
                     player.GetComponent<Rigidbody>().AddForce(knockbak * 4 + Vector3.up * 4, ForceMode.Impulse);
-                    player.gameObject.GetComponent<DamageMage>().RefreshHealth(-attackValue);
+                    player.gameObject.GetComponent<Character3D>().RefreshHealth(-attackValue);
                 }
             }
         }

@@ -32,7 +32,7 @@ public class RobotLaser : MonoBehaviour {
             if (hit.collider) {
                 laserHitParticle.transform.position = hit.point;
                 if (canHitAgain && hit.collider.gameObject.tag == "Player") {
-                    hit.collider.gameObject.GetComponent<DamageMage>().RefreshHealth(-5);
+                    hit.collider.gameObject.GetComponent<Character3D>().RefreshHealth(-5);
                     canHitAgain = false;
                     StartCoroutine(HitAgain());
                 }
@@ -52,6 +52,8 @@ public class RobotLaser : MonoBehaviour {
     }
 
     private void OnEnable() {
+        //transform.LookAt(transform.rotation, rotation, .4f);
+        laserHitParticle.transform.position = transform.position;
         canHitAgain = true;
     }
 }

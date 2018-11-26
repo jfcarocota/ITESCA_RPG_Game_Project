@@ -27,7 +27,7 @@ public class Archer : Character3D {
         objectPooler = ObjectPooler.Instance;
         originalMovementSpeed = movementSpeed;
         contadorflechas = maxArrows;
-		textArrows.text = "Flechas: " + contadorflechas;
+		textArrows.text = "x " + contadorflechas;
 	}
 
 	override protected void Move() {
@@ -52,7 +52,7 @@ public class Archer : Character3D {
 				if (animStateInfo.IsName ("shoot-still")) {
 					objectPooler.GetObjectFromPool ("Arrow", arrowSpawner.transform.position, arrowSpawner.transform.rotation, null);
                     contadorflechas -= 1;
-                    textArrows.text = "Flechas: " + contadorflechas;
+                    textArrows.text = "x " + contadorflechas;
                 }
 				anim.SetBool ("Attack", false);
 			}
@@ -67,8 +67,8 @@ public class Archer : Character3D {
 			}else {
 				contadorflechas += 5;
 			}
-			textArrows.text = "Flechas: " + contadorflechas;
-		}
-		Destroy(other.transform.parent.gameObject);
+			textArrows.text = "x " + contadorflechas;
+            Destroy(other.transform.parent.gameObject);
+        }
 	}
 }

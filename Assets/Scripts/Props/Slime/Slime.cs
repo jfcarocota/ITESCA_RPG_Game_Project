@@ -41,7 +41,7 @@ public class Slime : Enemy {
             collision.gameObject.GetComponent<Rigidbody>().AddForce(knockbak * 4 + Vector3.up * 2, ForceMode.Impulse);
             if (canAttackAgain) {
                 canAttackAgain = false;
-                collision.gameObject.GetComponent<DamageMage>().RefreshHealth(-attackValue);
+                collision.gameObject.GetComponent<Character3D>().RefreshHealth(-attackValue);
                 StartCoroutine(MakeCanAttackAgain());
             }
         }
