@@ -22,7 +22,7 @@ public class PartyManager: MonoBehaviour {
         }
         members = new GameObject[] {new GameObject(), new GameObject(), new GameObject(), new GameObject(), new GameObject()};
         Debug.Log(partyMembers);
-        partyMembers.CopyTo(members, 0);
+        members = partyMembers.ToArray();
         canSwap = true;
         StartCoroutine(WaitToSwap());
         vCam = FindObjectOfType<CinemachineVirtualCamera>();
@@ -50,7 +50,7 @@ public class PartyManager: MonoBehaviour {
                 member.GetComponent<Character3D>().partyNumber--;
             }
             partyMembers.Enqueue(lastMember);
-            partyMembers.CopyTo(members, 0);
+            members = partyMembers.ToArray();
             canSwap = false;
 
             //change virtual camera to new party leader
@@ -71,13 +71,17 @@ public class PartyManager: MonoBehaviour {
         {
             partyMembers.Dequeue();
         }
+        int j = 0;
         foreach (GameObject member in oldMembers)
         {
             if(member != deadMember)
             {
+                member.GetComponent<Character3D>().partyNumber = j++;
                 partyMembers.Enqueue(member);
             }
         }
+        members = partyMembers.ToArray();
+        vCam.Follow = vCam.LookAt = members[0].transform;
     }
 
     IEnumerator WaitToSwap()
