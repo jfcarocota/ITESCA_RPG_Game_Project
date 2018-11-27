@@ -20,10 +20,12 @@ namespace GameCore
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 string path = Path.Combine(Application.persistentDataPath, fileName);
+                string json = JsonUtility.ToJson(gameData);
                 FileStream file = File.Create(path);
-                bf.Serialize(file, gameData);
+                bf.Serialize(file, json);
                 file.Close();
                 Debug.Log("Saved at: " + path);
+                Debug.Log("Json: " + json);
             }
 
             public static GameData LoadData(string fileName)
@@ -34,7 +36,8 @@ namespace GameCore
                 {
                     FileStream file = File.Open(path, FileMode.Open);
                     BinaryFormatter bf = new BinaryFormatter();
-                    GameData gameData = (GameData)bf.Deserialize(file);
+                    string json = bf.Deserialize(file).ToString();
+                    GameData gameData = JsonUtility.FromJson<GameData>(json);
                     file.Close();
                     return gameData;
                 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44421104, g: 0.49365252, b: 0.5730462, a: 1}
+  m_IndirectSpecularColor: {r: 0.44421026, g: 0.49365187, b: 0.5730451, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7709,6 +7709,8 @@ MonoBehaviour:
   fadeInTime: 2
   deadTextTime: 3
   fadeOutTime: 2
+  beforeRobot: {fileID: 636972923}
+  afterRobot: {fileID: 367038212}
 --- !u!1001 &250696572
 Prefab:
   m_ObjectHideFlags: 0
@@ -14758,7 +14760,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.51185715, y: -0.00000002470269, z: 0.000000025458343, w: 0.85907066}
+  m_LocalRotation: {x: 0.51185715, y: 0.0000000048603033, z: 0.0000000078439255, w: 0.85907066}
   m_LocalPosition: {x: 10.094046, y: 15.884001, z: -28.690222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -28021,6 +28023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd4d94813be9104a9b25a562db70b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beforeRobot: {fileID: 636972923}
+  afterRobot: {fileID: 367038212}
 --- !u!114 &1125000469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46814,7 +46818,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1847861606}
-  m_LocalRotation: {x: 0.51185715, y: -0.00000002470269, z: 0.000000025458343, w: 0.85907066}
+  m_LocalRotation: {x: 0.51185715, y: 0.0000000048603033, z: 0.0000000078439255, w: 0.85907066}
   m_LocalPosition: {x: 10.094046, y: 15.884001, z: -28.690222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -19,6 +19,10 @@ public class GameData
     float[] posY;
     [SerializeField]
     float[] posZ;
+    [SerializeField]
+    bool beforeRobot;
+    [SerializeField]
+    bool afterRobot;
 
     /*
     public float PosX
@@ -66,13 +70,15 @@ public class GameData
         this.posZ = posZ;
     }
     */
-    public GameData(float[] posX, float[] posY, float[] posZ)
+    public GameData(float[] posX, float[] posY, float[] posZ, bool beforeRobot, bool afterRobot)
     {
         this.posX = posX;
         this.posY = posY;
         this.posZ = posZ;
+        this.BeforeRobot = beforeRobot;
+        this.AfterRobot = afterRobot;
     }
-    public GameData(Vector3[] positions)
+    public GameData(Vector3[] positions, bool beforeRobot, bool afterRobot)
     {
         posX = new float[positions.Length];
         posY = new float[positions.Length];
@@ -83,6 +89,8 @@ public class GameData
             posY[i] = positions[i].y;
             posZ[i] = positions[i].z;
         }
+        this.BeforeRobot = beforeRobot;
+        this.AfterRobot = afterRobot;
     }
 
     public GameData() { }
@@ -98,6 +106,32 @@ public class GameData
             }
 
             return vectors;
+        }
+    }
+
+    public bool BeforeRobot
+    {
+        get
+        {
+            return beforeRobot;
+        }
+
+        set
+        {
+            beforeRobot = value;
+        }
+    }
+
+    public bool AfterRobot
+    {
+        get
+        {
+            return afterRobot;
+        }
+
+        set
+        {
+            afterRobot = value;
         }
     }
 }

@@ -10,6 +10,11 @@ public class PartyManager: MonoBehaviour {
     private static bool canSwap;
     private static CinemachineVirtualCamera vCam;
 
+    [SerializeField]
+    GameObject beforeRobot;
+    [SerializeField]
+    GameObject afterRobot;
+
     private void Start()
     {
         partyMembers = new Queue<GameObject>();
@@ -30,10 +35,16 @@ public class PartyManager: MonoBehaviour {
         {
             //Esto tiene que estar en algun script que se ejecute cuando empieze el juego.
             GameData partyPos = MemorySystem.LoadData("party.data");
+            
             for (int j = 0; j < partyPos.PosVectors.Length; j++)
             {
                 members[j].transform.position = partyPos.PosVectors[j];
             }
+            //old load
+            beforeRobot.SetActive(partyPos.BeforeRobot);
+            afterRobot.SetActive(partyPos.AfterRobot);
+            //newLoad
+
             MemorySystem.loadGame = false;
         }
         vCam.Follow = vCam.LookAt = members[0].transform;

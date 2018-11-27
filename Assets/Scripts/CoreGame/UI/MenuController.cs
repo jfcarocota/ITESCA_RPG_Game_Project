@@ -46,6 +46,12 @@ public abstract class MenuController : MonoBehaviour {
     private Outline outlineText;
     private Outline outlineTextWin;
 
+    [SerializeField]
+    GameObject beforeRobot;
+    [SerializeField]
+    GameObject afterRobot;
+
+
     // Use this for initialization
     void Awake () {
         setPause();
@@ -213,12 +219,12 @@ public abstract class MenuController : MonoBehaviour {
         //get the current position of the player, later
         Queue<GameObject> parties = PartyManager.partyMembers;
         Vector3[] partyPos = new Vector3[4];
-        for (int i = 0; i < partyPos.Length; i++)
+        for (int i = 0; i < PartyManager.members.Length; i++)
         {
             partyPos[i] = PartyManager.members[i].transform.position;
         }
 
-        MemorySystem.Save(new GameData(partyPos), "party.data");
+        MemorySystem.Save(new GameData(partyPos,beforeRobot.activeSelf,afterRobot.activeSelf), "party.data");
         Debug.Log("Saved");
     }
 
