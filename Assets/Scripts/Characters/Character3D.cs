@@ -47,6 +47,17 @@ public abstract class Character3D : MonoBehaviour {
 
     protected AudioSource audioSource;
 
+    [SerializeField]
+    protected AudioClip audioDamage;
+    [SerializeField]
+    protected AudioClip audioDeath;
+    [SerializeField]
+    protected AudioClip audioExplosion;
+    [SerializeField]
+    protected AudioClip audioPickUp;
+
+
+
     // Use this for initialization
     protected virtual void Start () {
         objectPooler = ObjectPooler.Instance;
@@ -141,10 +152,12 @@ public abstract class Character3D : MonoBehaviour {
         if (other.tag == "ManaPickup") {
             RefreshMana(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
+            audioSource.PlayOneShot(audioPickUp);
         }
         else if (other.tag == "HealthPickup") {
             RefreshHealth(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
+            audioSource.PlayOneShot(audioPickUp);
         }
         else if (other.tag == "Skeley") {
             RefreshHealth(-other.transform.GetComponentInParent<Character3D>().attackValue);
@@ -180,8 +193,14 @@ public abstract class Character3D : MonoBehaviour {
             healthValue + healthChange;
 
         healthBarValue.fillAmount = healthValue / maxHealthValue;
+        if(healthChange < 0)
+        {
+            audioSource.PlayOneShot(audioDamage);
+        }
         if (healthValue <= 0)
         {
+            audioSource.PlayOneShot(audioDeath);
+            audioSource.PlayOneShot(audioExplosion);
             PartyManager.DeletePartyMember(gameObject);
             objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
             gameObject.SetActive(false);

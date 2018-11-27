@@ -3317,6 +3317,10 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   partyNumber: 0
   followDistance: 0
+  audioDamage: {fileID: 8300000, guid: 387d5ff17639e3944989f020ee7a2663, type: 3}
+  audioDeath: {fileID: 0}
+  audioExplosion: {fileID: 0}
+  audioPickUp: {fileID: 0}
   startDamage: 0
   trackDistance: 20
   knockbackForce: 0
@@ -3326,7 +3330,7 @@ MonoBehaviour:
   attackArea: {fileID: 135517624486669264}
   audioAttack: {fileID: 8300000, guid: 5e7108ab849db344097ee511f236db0c, type: 3}
   audioBones: {fileID: 8300000, guid: 6187526c3ec128648989cc96be4a02e8, type: 3}
-  audioDamage: {fileID: 8300000, guid: 387d5ff17639e3944989f020ee7a2663, type: 3}
+  audioDamageSkely: {fileID: 0}
 --- !u!114 &114872455933418214
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -17,7 +17,7 @@ public class SkelyEnemy : Enemy {
     [SerializeField]
     protected AudioClip audioBones;
     [SerializeField]
-    protected AudioClip audioDamage;
+    protected AudioClip audioDamageSkely;
 
     protected AudioSource walkingSounds;
 
@@ -31,6 +31,7 @@ public class SkelyEnemy : Enemy {
         firstTracked = true;
         walkingSounds = GetComponents<AudioSource>()[1];
         walkingSounds.clip = audioBones;
+        walkingSounds.Play();
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -40,19 +41,19 @@ public class SkelyEnemy : Enemy {
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
-            audioSource.PlayOneShot(audioDamage);
+            audioSource.PlayOneShot(audioDamageSkely);
         }
         if (other.tag == "Arrow" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
-            audioSource.PlayOneShot(audioDamage);
+            audioSource.PlayOneShot(audioDamageSkely);
         }
         if (other.tag == "Damage" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
-            audioSource.PlayOneShot(audioDamage);
+            audioSource.PlayOneShot(audioDamageSkely);
         }
     }
 
@@ -65,6 +66,7 @@ public class SkelyEnemy : Enemy {
             firstTracked = tracked ? false : firstTracked;
             followPlayer = !firstTracked;
         }
+        /*
         if (tracked && !walkingSounds.isPlaying)
         {
             walkingSounds.Play();
@@ -72,7 +74,7 @@ public class SkelyEnemy : Enemy {
         else if(!tracked && walkingSounds.isPlaying)
         {
             walkingSounds.Stop();
-        }
+        }*/
 
     }
     
