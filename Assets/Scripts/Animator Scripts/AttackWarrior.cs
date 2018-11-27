@@ -15,7 +15,9 @@ public class AttackWarrior : StateMachineBehaviour {
             { 
             WarriorMan warrior = animator.GetComponent<WarriorMan>();
             warrior.SetCollidersStatus(true, "Sword");
-             }
+            warrior.audioSourceWarrior.PlayOneShot(warrior.audioWoosh);
+            
+        }
             else if (animator.GetComponent<WarriorDummy>())
             {
 

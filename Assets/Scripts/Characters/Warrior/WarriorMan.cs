@@ -14,15 +14,24 @@ public class WarriorMan : Character3D
     float oldMovementSpeed;
     bool cooldown = false;
     public bool Guarded = false;
-    
-   
+
+    [SerializeField]
+    public AudioClip audiohit;
+    [SerializeField]
+    public AudioClip audioWoosh;
+    [SerializeField]
+    public AudioClip audioShield;
+
+    [HideInInspector]
+    public AudioSource audioSourceWarrior;
+
 
     override protected void Start()
     {
         
         
         base.Start();
-        
+        audioSourceWarrior = audioSource;
     }
 
     protected override void Attack()
@@ -54,8 +63,9 @@ public class WarriorMan : Character3D
         if (Controllers.GetFire(1, 1) )
         {
             animator.SetTrigger("Attack");
-         //   SetCollidersStatus(true, "Sword");
             
+            //   SetCollidersStatus(true, "Sword");
+
         }
 
        
@@ -76,7 +86,7 @@ public class WarriorMan : Character3D
         base.Guard();
         if (Controllers.GetFire(2, 1))
         {
-
+            
             animator.SetBool("Guard",true);
             Guarded = true;
             //rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ |  RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
