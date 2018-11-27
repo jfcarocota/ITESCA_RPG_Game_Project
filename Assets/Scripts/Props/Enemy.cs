@@ -10,8 +10,8 @@ public class Enemy : Character3D {
     public int startDamage;
     
     protected GameObject player;
-    [SerializeField]
-    NavMeshAgent agent;
+    
+    protected NavMeshAgent agent;
     protected float distanceToPlayer;
     protected bool tracked;
     [SerializeField]
@@ -26,6 +26,7 @@ public class Enemy : Character3D {
         player = PartyManager.members[0];
         StartCoroutine(CheckProximityToPlayer());
         StartCoroutine(CheckLeader());
+        agent = GetComponent<NavMeshAgent>();
     }
 
     protected override void OnCollisionEnter(Collision collision) {
@@ -53,8 +54,15 @@ public class Enemy : Character3D {
     
     protected override void Move() {
         if (tracked) {
-            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            //agent.SetDestination(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
+            //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            if(gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
+            {
+                agent.SetDestination(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+            }
+            else
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            }
         }
     }
 

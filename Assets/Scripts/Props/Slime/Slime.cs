@@ -54,9 +54,19 @@ public class Slime : Enemy {
     IEnumerator Jump() {
         touchGround = false;
         movementSpeed = 0;
-        animator.SetTrigger("TouchGround");
+        if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
+        {
+            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
+        }
+        //gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+        animator.SetTrigger("TouchGround");  
         yield return new WaitForSeconds(20f / 30f);
         movementSpeed = originalMovementSpeed;
+        if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
+        {
+            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = originalMovementSpeed;
+        }
+        //gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         rb.AddForce(transform.right * Random.Range(-2f, 2f) + Vector3.up * jumpForce, ForceMode.Impulse);
         isInAir = true;
     }

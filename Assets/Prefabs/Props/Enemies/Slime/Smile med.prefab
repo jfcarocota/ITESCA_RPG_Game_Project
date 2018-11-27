@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 54361602264360192}
   - component: {fileID: 65528707795562552}
   - component: {fileID: 114101915455124556}
+  - component: {fileID: 195839468238914256}
   m_Layer: 0
   m_Name: Smile med
   m_TagString: Untagged
@@ -484,8 +485,6 @@ MonoBehaviour:
   partyNumber: 0
   followDistance: 0
   startDamage: 0
-  playerTransform: {fileID: 0}
-  agent: {fileID: 0}
   trackDistance: 8
   knockbackForce: 4.24
   jumpForce: 5.6
@@ -646,6 +645,27 @@ SkinnedMeshRenderer:
     m_Center: {x: -60.16084, y: 0.049682617, z: 0}
     m_Extent: {x: 60.205006, y: 60.320145, z: 60.00002}
   m_DirtyAABB: 0
+--- !u!195 &195839468238914256
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859256733624772}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!222 &222648736753345498
 CanvasRenderer:
   m_ObjectHideFlags: 1
