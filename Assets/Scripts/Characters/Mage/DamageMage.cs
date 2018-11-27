@@ -10,7 +10,10 @@ public class DamageMage : Character3D {
     GameObject spellSpawner;
     [SerializeField, Range(0,100)]
     int manaSpell;
-    
+
+    [SerializeField]
+    AudioClip audioFireCast;
+
     protected override void Start() {
         usesMana = true;
         base.Start();
@@ -25,6 +28,7 @@ public class DamageMage : Character3D {
         base.Attack();
         if(Controllers.GetFire(1, 2)) {
             if (RefreshMana(-manaSpell)) {
+                audioSource.PlayOneShot(audioFireCast);
                 animator.SetTrigger("Attack");
                 objectPooler.GetObjectFromPool("Spell", spellSpawner.transform.position, spellSpawner.transform.rotation, null);
                 objectPooler.GetObjectFromPool("SpellCast", spellSpawner.transform.position, spellSpawner.transform.rotation, spellSpawner.transform);

@@ -12,7 +12,12 @@ public class Arrows : MonoBehaviour {
 	Rigidbody rb;
 	ObjectPooler objectPooler;
 
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip audioShotHit;
+
 	void Start(){
+        audioSource = GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody>();
 		objectPooler = ObjectPooler.Instance;
         rb.AddForce(transform.forward * force, ForceMode.Impulse);
@@ -20,7 +25,8 @@ public class Arrows : MonoBehaviour {
 
     void OnTriggerEnter(Collider other){
 		if (other.tag != "Player" && other.tag != "NPC" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup") {
-			rb.velocity = Vector3.zero;
+            audioSource.PlayOneShot(audioShotHit);
+            rb.velocity = Vector3.zero;
 			rb.useGravity = false;
 			objectPooler.ReturnObjectToPool ("Arrow", gameObject);
 		}

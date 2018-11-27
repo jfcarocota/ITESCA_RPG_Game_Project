@@ -745,11 +745,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4952826713453110, guid: b65278ee59de87d43b3f79fdd0692562,
     type: 2}
   m_PrefabInternal: {fileID: 482559592}
---- !u!1 &489636065 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1998127813644468, guid: 1d1b185217404884e935f332e9fdd510,
-    type: 2}
-  m_PrefabInternal: {fileID: 540847091}
 --- !u!224 &489636066 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224622040938179566, guid: 1d1b185217404884e935f332e9fdd510,
@@ -1617,8 +1612,6 @@ MonoBehaviour:
   partyNumber: 0
   followDistance: 0
   startDamage: 70
-  playerTransform: {fileID: 1248598721}
-  agent: {fileID: 0}
   trackDistance: 0
   knockbackForce: 0
 --- !u!95 &1082976337
@@ -1786,11 +1779,6 @@ Prefab:
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 449258814}
-    - target: {fileID: 114164360120657942, guid: 88915c6779f9adc43b4a7786a884e738,
-        type: 2}
-      propertyPath: deadText
-      value: 
-      objectReference: {fileID: 489636065}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88915c6779f9adc43b4a7786a884e738, type: 2}
   m_IsPrefabAsset: 0
@@ -2344,7 +2332,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1597324797}
-  m_LocalRotation: {x: 0.2379487, y: -0.0017579518, z: 0.00043040834, w: 0.97127604}
+  m_LocalRotation: {x: 0.2379487, y: -0.0017575169, z: 0.00043030165, w: 0.97127604}
   m_LocalPosition: {x: 0, y: 6.35, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2683,7 +2671,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083802628}
-  m_LocalRotation: {x: 0.2379487, y: -0.0017579518, z: 0.00043040834, w: 0.97127604}
+  m_LocalRotation: {x: 0.2379487, y: -0.0017575169, z: 0.00043030165, w: 0.97127604}
   m_LocalPosition: {x: 0, y: 6.35, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

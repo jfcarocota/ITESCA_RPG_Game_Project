@@ -22,6 +22,9 @@ public class Archer : Character3D {
 
     float originalMovementSpeed;
 
+    [SerializeField]
+    AudioClip audioChargeArrow, audioShotArrow, audioPickArrows;
+
 	override protected void Start(){
 		base.Start ();
         originalMovementSpeed = movementSpeed;
@@ -45,11 +48,13 @@ public class Archer : Character3D {
 		if (contadorflechas > 0) {
 			if (Controllers.GetFire (1, 1)) {
 				anim.SetBool ("Attack", true);
+                audioSource.PlayOneShot(audioChargeArrow);
 			}
 			if (Controllers.GetFire (1, 2)) {
 				animStateInfo = anim.GetCurrentAnimatorStateInfo (0);
 				if (animStateInfo.IsName ("shoot-still")) {
-					objectPooler.GetObjectFromPool ("Arrow", arrowSpawner.transform.position, arrowSpawner.transform.rotation, null);
+                    audioSource.PlayOneShot(audioShotArrow);
+                    objectPooler.GetObjectFromPool ("Arrow", arrowSpawner.transform.position, arrowSpawner.transform.rotation, null);
                     contadorflechas -= 1;
                     textArrows.text = "x " + contadorflechas;
                 }
@@ -61,6 +66,7 @@ public class Archer : Character3D {
 	override protected void OnTriggerEnter(Collider other){
         base.OnTriggerEnter(other);
 		if (other.tag.Equals("Arrows")) {
+            audioSource.PlayOneShot(audioPickArrows);
 			if ((contadorflechas + 5) > maxArrows) {
 				contadorflechas = 10;
 			}else {

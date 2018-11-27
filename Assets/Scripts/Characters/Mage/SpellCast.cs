@@ -19,7 +19,7 @@ public class SpellCast : PooledObjectBehavior {
 
     Vector3 blastInitialScale;
     float scale;
-
+    
     protected override void Start () {
         base.Start();
         blastInitialScale = new Vector3(blastInitialScaleFactor, blastInitialScaleFactor, blastInitialScaleFactor);

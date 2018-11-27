@@ -38,8 +38,15 @@ public class Robot : Enemy {
 
     float originalMovementSpeed;
 
+    AudioSource audioSource2;
+    [SerializeField]
+    AudioClip audioSounds, audioDamage, audioDeath, audioLeg, audioStep, audioLaser;
+
     protected override void Start() {
         base.Start();
+        audioSource2 = GetComponents<AudioSource>()[1];
+        audioSource2.clip = audioSounds;
+        audioSource2.Play();
         originalMovementSpeed = movementSpeed;
         trackedToStep = false;
         isSteping = false;

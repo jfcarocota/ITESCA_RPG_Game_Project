@@ -17,6 +17,9 @@ public class Slime : Enemy {
     [SerializeField]
     GameObject slimesToInstantiate;
 
+    [SerializeField]
+    AudioClip audioJump, audioDamage;
+
     override protected void Start() {
         base.Start();
         canAttackAgain = true;
@@ -51,9 +54,23 @@ public class Slime : Enemy {
         }
     }
 
+    protected override void OnTriggerEnter(Collider other) {
+        base.OnTriggerEnter(other);
+        if (other.tag == "Spell") {
+            audioSource.PlayOneShot(audioDamage);
+        }
+        else if (other.tag == "Arrow") {
+            audioSource.PlayOneShot(audioDamage);
+        }
+        else if (other.tag == "Damage") {
+            audioSource.PlayOneShot(audioDamage);
+        }
+    }
+
     IEnumerator Jump() {
         touchGround = false;
         movementSpeed = 0;
+        audioSource.PlayOneShot(audioJump);
         if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
         {
             gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
