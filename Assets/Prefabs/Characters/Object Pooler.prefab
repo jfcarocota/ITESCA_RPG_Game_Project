@@ -64,3 +64,12 @@ MonoBehaviour:
   - tag: EnemyExplosion
     prefab: {fileID: 1899205969847916, guid: c9bcbd4237663254f993b569947eaf50, type: 2}
     size: 5
+  - tag: Arrow
+    prefab: {fileID: 1587860196397988, guid: de3e1edf20e464141b81be16501608c8, type: 2}
+    size: 3
+  - tag: CannonBall
+    prefab: {fileID: 1305848677427502, guid: 57779f8d91a78fa4abe8c1d9e811ea4a, type: 2}
+    size: 3
+  - tag: SmokeRing
+    prefab: {fileID: 1895590901268706, guid: 2e80087d499045346ae45f3ddd0c2b08, type: 2}
+    size: 3

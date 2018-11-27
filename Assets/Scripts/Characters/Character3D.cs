@@ -30,7 +30,7 @@ public abstract class Character3D : MonoBehaviour {
     [SerializeField]
     protected GameObject manaBar;
     protected Image manaBarValue;
-    [SerializeField]
+    [HideInInspector]
     public int partyNumber;
 
     protected Animator animator;
