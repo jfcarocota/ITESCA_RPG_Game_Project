@@ -40,7 +40,7 @@ public class Robot : Enemy {
 
     AudioSource audioSource2;
     [SerializeField]
-    AudioClip audioSounds, audioDamage, audioDeath, audioLeg, audioStep, audioLaser;
+    AudioClip audioSounds, audioDamageRobot, audioDeathRobot, audioLeg, audioStep, audioLaser;
 
     protected override void Start() {
         base.Start();
