@@ -467,9 +467,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -502,7 +502,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -580,6 +580,10 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   partyNumber: 0
   followDistance: 0
+  audioDamage: {fileID: 0}
+  audioDeath: {fileID: 0}
+  audioExplosion: {fileID: 0}
+  audioPickUp: {fileID: 0}
   startDamage: 0
   trackDistance: 8
   knockbackForce: 4.24
@@ -588,7 +592,7 @@ MonoBehaviour:
   slimesToInstantiate: {fileID: 1723061421793064, guid: e8329ba14162f2841bb1fcfd157f0a6a,
     type: 2}
   audioJump: {fileID: 8300000, guid: bd0d42849fd75bb4d8bd6eae24c115ff, type: 3}
-  audioDamage: {fileID: 8300000, guid: ee7946ddc511e4b4390da88f14645ce8, type: 3}
+  audioDamageSlime: {fileID: 8300000, guid: ee7946ddc511e4b4390da88f14645ce8, type: 3}
 --- !u!114 &114104054199114316
 MonoBehaviour:
   m_ObjectHideFlags: 1

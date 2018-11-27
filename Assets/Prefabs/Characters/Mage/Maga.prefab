@@ -1734,9 +1734,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1769,7 +1769,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1847,6 +1847,10 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   partyNumber: 0
   followDistance: 2
+  audioDamage: {fileID: 8300000, guid: 58ca74ac395df954b8134da9c6eb6356, type: 3}
+  audioDeath: {fileID: 8300000, guid: e8d65ccc54bf934489d641aead268808, type: 3}
+  audioExplosion: {fileID: 8300000, guid: 36447587426a4f74da0075985c78a9a1, type: 3}
+  audioPickUp: {fileID: 8300000, guid: 74625111f1032dd4ca65adf2bca57d83, type: 3}
   spellSpawner: {fileID: 1183659430439262}
   manaSpell: 15
   audioFireCast: {fileID: 8300000, guid: 7a2b47f3928fe714588eb8725eea545d, type: 3}

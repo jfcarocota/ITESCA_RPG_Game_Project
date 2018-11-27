@@ -3699,9 +3699,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3734,7 +3734,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3794,9 +3794,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3829,7 +3829,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4014,6 +4014,10 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   partyNumber: 0
   followDistance: 0
+  audioDamage: {fileID: 0}
+  audioDeath: {fileID: 0}
+  audioExplosion: {fileID: 0}
+  audioPickUp: {fileID: 0}
   startDamage: 0
   trackDistance: 14
   knockbackForce: 1.99
@@ -4029,8 +4033,8 @@ MonoBehaviour:
   beforeRobot: {fileID: 0}
   afterRobot: {fileID: 0}
   audioSounds: {fileID: 8300000, guid: cef1f503aeb1df84b8ed6d0dc15a82c2, type: 3}
-  audioDamage: {fileID: 8300000, guid: f9ccb352aea66ba488f2f7a92f80e0ff, type: 3}
-  audioDeath: {fileID: 8300000, guid: e46519a3009d71e428b039f0c4fcae87, type: 3}
+  audioDamageRobot: {fileID: 8300000, guid: f9ccb352aea66ba488f2f7a92f80e0ff, type: 3}
+  audioDeathRobot: {fileID: 8300000, guid: e46519a3009d71e428b039f0c4fcae87, type: 3}
   audioLeg: {fileID: 8300000, guid: 46a5a9dd36cdbef45a4411d7414c7885, type: 3}
   audioStep: {fileID: 8300000, guid: 5ccafc67af29e3648bab08a688ff2042, type: 3}
   audioLaser: {fileID: 8300000, guid: fc444c7c1e97ed0498404c7959ddf9b8, type: 3}
