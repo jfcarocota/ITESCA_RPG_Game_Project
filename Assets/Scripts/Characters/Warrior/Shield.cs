@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-
+    WarriorMan father;
     
 	void Start()
     {
-
+        father = this.transform.root.gameObject.GetComponent<WarriorMan>();
     }
 
     // Update is called once per frame
@@ -78,9 +78,9 @@ public class Shield : MonoBehaviour
         }        
        
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        father.audioSourceWarrior.PlayOneShot(father.audioWoosh);
     }
 }
 

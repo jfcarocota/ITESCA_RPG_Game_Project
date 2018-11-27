@@ -18,7 +18,7 @@ public class Slime : Enemy {
     GameObject slimesToInstantiate;
 
     [SerializeField]
-    AudioClip audioJump, audioDamage;
+    AudioClip audioJump, audioDamageSlime;
 
     override protected void Start() {
         base.Start();
@@ -57,13 +57,13 @@ public class Slime : Enemy {
     protected override void OnTriggerEnter(Collider other) {
         base.OnTriggerEnter(other);
         if (other.tag == "Spell") {
-            audioSource.PlayOneShot(audioDamage);
+            audioSource.PlayOneShot(audioDamageSlime);
         }
         else if (other.tag == "Arrow") {
-            audioSource.PlayOneShot(audioDamage);
+            audioSource.PlayOneShot(audioDamageSlime);
         }
         else if (other.tag == "Damage") {
-            audioSource.PlayOneShot(audioDamage);
+            audioSource.PlayOneShot(audioDamageSlime);
         }
     }
 

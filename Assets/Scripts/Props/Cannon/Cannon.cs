@@ -18,6 +18,8 @@ public class Cannon : Enemy
     bool AttackPlayer = false;
 
     ObjectPooler objectPooler1;
+    [SerializeField]
+    protected AudioClip audioA;
 
     private Transform myTransform;
     [SerializeField]
@@ -40,7 +42,7 @@ public class Cannon : Enemy
         
         
         
-        if(Skelly){ 
+        if(Skelly && tracked){ 
             Quaternion rotation = Quaternion.LookRotation(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
@@ -51,9 +53,10 @@ public class Cannon : Enemy
         base.Attack();
 
        
-        if (Attacking && AttackPlayer)
+        if (Attacking && AttackPlayer && tracked)
         {
             StartCoroutine(Shoot());
+            audioSource.PlayOneShot(audioA);
             objectPooler.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
             objectPooler.GetObjectFromPool("SmokeRing", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
             Attacking=false;
