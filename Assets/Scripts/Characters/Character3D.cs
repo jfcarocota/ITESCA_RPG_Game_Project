@@ -45,6 +45,8 @@ public abstract class Character3D : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+    protected AudioSource audioSource;
+
     // Use this for initialization
     protected virtual void Start () {
         objectPooler = ObjectPooler.Instance;
@@ -63,6 +65,7 @@ public abstract class Character3D : MonoBehaviour {
             StartCoroutine(ManaRegen());
         }
         //partyNumber = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
