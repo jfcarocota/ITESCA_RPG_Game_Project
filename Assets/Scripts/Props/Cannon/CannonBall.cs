@@ -6,10 +6,9 @@ using GameCore.ObjectPooler;
 public class CannonBall : PooledObjectBehavior {
 
 
+    
     [SerializeField]
     GameObject smoke;
-    [HideInInspector]
-    public float damageValue;
 
     [SerializeField]
     float velocity;
@@ -24,23 +23,32 @@ public class CannonBall : PooledObjectBehavior {
     [SerializeField, Range(-10, 10)]
     float smokeStartDecresingTime;
 
-    //Vector3 smokeInitialScale;
+    Vector3 smokeInitialScale;
     float scale;
     [SerializeField]
     float life;
+    
+    public float AttackValue;
+
     override protected void Awake()
     {
         ballRigidBody = GetComponent<Rigidbody>();
-        //damageValue = GameObject.Find("Cannon").GetComponent<Enemy>().attackValue;
+        
+        if (scaleFactor != 0)
+        {
+            smokeInitialScale = smoke.transform.localScale;
+        }
     }
 
     override protected void Start()
     {
         base.Start();
-       
-        collide = false;
-        //ballRigidBody.velocity = transform.forward * velocity * Time.deltaTime;
         
+        collide = false;
+        
+
+        //ballRigidBody.velocity = transform.forward * velocity * Time.deltaTime;
+
     }
 
     override protected void Update()
@@ -76,9 +84,9 @@ public class CannonBall : PooledObjectBehavior {
     override protected void ReturnObjectToPool()
     {
         collide = false;
-        /*if(scaleFactor != 0) {
+        if(scaleFactor != 0) {
             smoke.transform.localScale = smokeInitialScale;
-        }*/
+        }
         base.ReturnObjectToPool();
     }
 }

@@ -56,11 +56,11 @@ MonoBehaviour:
   maxLifeTime: 0.5
   poolTag: SmokeRing
   smoke: {fileID: 1895590901268706}
-  damageValue: 0
   velocity: 0
   scaleFactor: 5
   smokeStartDecresingTime: 0
   life: 0
+  AttackValue: 0
 --- !u!198 &198695758943466804
 ParticleSystem:
   m_ObjectHideFlags: 1

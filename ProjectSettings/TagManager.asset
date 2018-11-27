@@ -17,6 +17,7 @@ TagManager:
   - Wall
   - Skeley
   - NPC
+  - Ball
   layers:
   - Default
   - TransparentFX

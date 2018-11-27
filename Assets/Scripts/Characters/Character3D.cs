@@ -146,6 +146,10 @@ public abstract class Character3D : MonoBehaviour {
         else if (other.tag == "Skeley") {
             RefreshHealth(-other.transform.GetComponentInParent<Character3D>().attackValue);
         }
+        else if (other.tag == "Ball")
+        {
+            RefreshHealth(-other.GetComponent<CannonBall>().AttackValue);
+        }
         else if (other.tag == "NPC") {
             print(other.name);
             other.gameObject.SetActive(false);

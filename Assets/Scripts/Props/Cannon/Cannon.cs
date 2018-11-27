@@ -25,9 +25,10 @@ public class Cannon : Enemy
     protected override void Start()
     {
         base.Start();
-        if (objectPooler1) { objectPooler1 = ObjectPooler.Instance; }
         
-        myTransform = this.transform;
+        
+        
+        
     }
 
     override protected void Move()
@@ -40,8 +41,8 @@ public class Cannon : Enemy
         
         
         if(Skelly){ 
-            Quaternion rotation = Quaternion.LookRotation(player.transform.position - myTransform.position);
-            myTransform.rotation = Quaternion.Slerp(myTransform.rotation, rotation, Time.deltaTime * damping);
+            Quaternion rotation = Quaternion.LookRotation(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z) - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
         }
 
     }
@@ -53,8 +54,8 @@ public class Cannon : Enemy
         if (Attacking && AttackPlayer)
         {
             StartCoroutine(Shoot());
-            objectPooler1.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
-            objectPooler1.GetObjectFromPool("SmokeRing", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
+            objectPooler.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
+            objectPooler.GetObjectFromPool("SmokeRing", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
             Attacking=false;
         }
 

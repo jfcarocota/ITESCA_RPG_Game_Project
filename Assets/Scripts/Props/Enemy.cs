@@ -45,6 +45,7 @@ public class Enemy : Character3D {
             RefreshHealth(-40f);
             Knockback();
         }
+
         if (healthValue <= 0) {
             OnDeath();
         }

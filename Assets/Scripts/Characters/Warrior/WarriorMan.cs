@@ -115,15 +115,11 @@ public class WarriorMan : Character3D
         //  Debug.Log("Collider: "+other.name+ " Padre: " + other.transform.root.name+ " Objeto tocado: "+this.name);
         //  Debug.Log("Collider: " + other.tag + " Padre tag: " + other.transform.root.tag + " Objeto tocado: " + this.tag);
 
-        if (other.tag == "Damage"  && (this.name != other.transform.root.name))
-        {
-            RefreshHealth(-30f);
-        }
         
-        if (other.transform.root.tag == "Player" ) 
-        {
-            SetCollidersStatus(false, "Sword");
-        }
+       // if (other.transform.root.tag == "Player" ) 
+       // {
+        //    SetCollidersStatus(false, "Sword");
+        //}
         
 
 
