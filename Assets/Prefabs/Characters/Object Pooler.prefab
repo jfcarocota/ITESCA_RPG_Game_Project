@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4771004018073394}
   - component: {fileID: 114894691246932872}
   m_Layer: 0
-  m_Name: Maga Object Pooler
+  m_Name: Object Pooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

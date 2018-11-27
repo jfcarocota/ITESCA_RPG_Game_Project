@@ -10,6 +10,8 @@ public class Healer : Character3D {
     [SerializeField,Range(0,50)]
     protected int healManaCost;
     protected ParticleSystem particles;
+    [SerializeField]
+    protected AudioClip healSound;
 
     override protected void Start()
     {
@@ -31,6 +33,7 @@ public class Healer : Character3D {
             StartCoroutine(WaitAndHeal());
             animator.SetTrigger("Cast");
             particles.Play();
+            audioSource.PlayOneShot(healSound);
         }
     }
     protected override void Move()

@@ -65,7 +65,7 @@ public abstract class Character3D : MonoBehaviour {
             StartCoroutine(ManaRegen());
         }
         //partyNumber = 0;
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponents<AudioSource>()[0];
     }
 	
 	// Update is called once per frame

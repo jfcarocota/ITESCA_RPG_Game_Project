@@ -12,6 +12,15 @@ public class SkelyEnemy : Enemy {
     protected SphereCollider attackArea;
     private bool firstTracked;
 
+    [SerializeField]
+    protected AudioClip audioAttack;
+    [SerializeField]
+    protected AudioClip audioBones;
+    [SerializeField]
+    protected AudioClip audioDamage;
+
+    protected AudioSource walkingSounds;
+
 
     override protected void Start()
     {
@@ -20,6 +29,8 @@ public class SkelyEnemy : Enemy {
         animator = GetComponent<Animator>();
         RefreshHealth(-50);
         firstTracked = true;
+        walkingSounds = GetComponents<AudioSource>()[1];
+        walkingSounds.clip = audioBones;
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -29,16 +40,19 @@ public class SkelyEnemy : Enemy {
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
+            audioSource.PlayOneShot(audioDamage);
         }
         if (other.tag == "Arrow" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
+            audioSource.PlayOneShot(audioDamage);
         }
         if (other.tag == "Damage" && healthValue > 0)
         {
             animator.SetTrigger("Damage");
             StartCoroutine(StopAndWait(1f));
+            audioSource.PlayOneShot(audioDamage);
         }
     }
 
@@ -51,8 +65,15 @@ public class SkelyEnemy : Enemy {
             firstTracked = tracked ? false : firstTracked;
             followPlayer = !firstTracked;
         }
-        
-            
+        if (tracked && !walkingSounds.isPlaying)
+        {
+            walkingSounds.Play();
+        }
+        else if(!tracked && walkingSounds.isPlaying)
+        {
+            walkingSounds.Stop();
+        }
+
     }
     
     protected override void Attack()
@@ -82,6 +103,7 @@ public class SkelyEnemy : Enemy {
         attackArea.enabled = false;
         yield return new WaitForSeconds(waitTime/4);
         hurtBox.enabled = true;
+        audioSource.PlayOneShot(audioAttack);
         yield return new WaitForSeconds(waitTime / 4);
         hurtBox.enabled = false;
         yield return new WaitForSeconds(waitTime / 2);
