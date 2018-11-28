@@ -27,7 +27,6 @@ public class SkelyEnemy : Enemy {
         base.Start();
         followPlayer = false;
         animator = GetComponent<Animator>();
-        RefreshHealth(-50);
         firstTracked = true;
         walkingSounds = GetComponents<AudioSource>()[1];
         walkingSounds.clip = audioBones;
