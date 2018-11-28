@@ -45,10 +45,7 @@ public class CannonBall : PooledObjectBehavior {
         base.Start();
         
         collide = false;
-        
-
         //ballRigidBody.velocity = transform.forward * velocity * Time.deltaTime;
-
     }
 
     override protected void Update()
@@ -72,7 +69,7 @@ public class CannonBall : PooledObjectBehavior {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "FollowEnemyTrigger")
+        if (other.tag != "NPC" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup" && other.tag != "Music") 
         {
             collide = true;
             ballRigidBody.velocity = Vector3.zero;

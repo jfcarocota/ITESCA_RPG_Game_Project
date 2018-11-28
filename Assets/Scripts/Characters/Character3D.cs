@@ -164,10 +164,16 @@ public abstract class Character3D : MonoBehaviour {
             audioSource.PlayOneShot(audioPickUp);
         }
         else if (other.tag == "Skeley") {
+            Vector3 knockbak = transform.position - other.transform.position;
+            knockbak = new Vector3(knockbak.x, 0f, knockbak.z).normalized;
+            rb.AddForce(knockbak * 4 + Vector3.up * 1, ForceMode.Impulse);
             RefreshHealth(-other.transform.GetComponentInParent<Character3D>().attackValue);
         }
         else if (other.tag == "Ball")
         {
+            Vector3 knockbak = transform.position - other.transform.position;
+            knockbak = new Vector3(knockbak.x, 0f, knockbak.z).normalized;
+            rb.AddForce(knockbak * 3 + Vector3.up * 2, ForceMode.Impulse);
             RefreshHealth(-other.GetComponent<CannonBall>().AttackValue);
             audioSource.PlayOneShot(audioDamage);
         }
