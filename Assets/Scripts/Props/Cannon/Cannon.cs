@@ -45,7 +45,8 @@ public class Cannon : Enemy
     protected override void Attack()
     {
         base.Attack();
-        if (Attacking && AttackPlayer && tracked) {
+        if (Attacking && AttackPlayer && tracked)
+        {
             Attacking = false;
             StartCoroutine(Shoot());
         }

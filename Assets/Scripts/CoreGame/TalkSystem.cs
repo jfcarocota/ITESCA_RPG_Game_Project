@@ -38,7 +38,7 @@ namespace GameCore {
                 dialogs = new List<string>();
                 dialogs.Add("02El Brayan Daniel:\nTa cabrón que el único ****** baño del pueblo este atrás de tu casa >:(|"
                     + "02El Brayan Daniel:\nApesta bien ****** pero no puedo lavarlo por que hay un esqueleto cerca del pozo :(");
-                dialogs.Add("03Chin Wong Tong:\n¡HAAAAAAY NARANJAS! ¡SEÑORA, SEÑOR, LA NARANJA! ¡LA MÁS GRANDE, LA MAS JUGOSA! ¡LA MÁS DULCE, SABROSA, RIQUISIMA LA NARANJA!|" 
+                dialogs.Add("03Chin Wong Tong:\n¡HAAAAAAY MANZANAS! ¡SEÑORA, SEÑOR, LA MANZANA! ¡LA MÁS GRANDE, LA MAS JUGOSA! ¡LA MÁS DULCE, SABROSA, RIQUISIMA LA MANZANA!|"
                     + "03Chin Wong Tong:\n¡Oigan amigos! ¡Oigan amigos! ¡¿No quieren unas naranjas?!|" 
                     + "03Chin Wong Tong:\n¡Son tan buenas que acabamos de enviar un carrito al pueblo vecino!");
                 dialogs.Add("01Regina Stevens:\n¡Aventureros :o! No se ven muchos por estos rumbos. En especial una party tan variada *smirk*|"
