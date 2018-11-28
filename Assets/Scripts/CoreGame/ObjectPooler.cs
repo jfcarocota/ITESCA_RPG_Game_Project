@@ -57,10 +57,10 @@ namespace GameCore {
                 GameObject obj = null;
                 if (poolDictionary[tag].Count > 0) {
                     obj = poolDictionary[tag].Dequeue();
-                    obj.SetActive(true);
                     obj.transform.position = position;
                     obj.transform.rotation = rotation;
                     if(parent != null) obj.transform.parent = parent;
+                    obj.SetActive(true);
                 }
                 return;
             }

@@ -46,7 +46,6 @@ public class Enemy : Character3D {
             RefreshHealth(-40f);
             Knockback();
         }
-
         if (healthValue <= 0) {
             OnDeath();
         }
@@ -54,15 +53,7 @@ public class Enemy : Character3D {
     
     protected override void Move() {
         if (tracked) {
-            //transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            if(gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
-            {
-                agent.SetDestination(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-            }
-            else
-            {
-                transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            }
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
         }
     }
 
@@ -85,6 +76,7 @@ public class Enemy : Character3D {
     }
 
     protected virtual void OnDeath() {
+        deathSound.PlaySound(transform.position, audioExplosion);
         objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
         Destroy(gameObject);
     }

@@ -12,24 +12,40 @@ public class Arrows : MonoBehaviour {
 	Rigidbody rb;
 	ObjectPooler objectPooler;
 
+    DeathSound deathSound;
     AudioSource audioSource;
     [SerializeField]
     AudioClip audioShotHit;
 
-	void Start(){
+    bool firstEnable;
+
+    private void Awake() {
+        rb = GetComponent<Rigidbody>();
+        firstEnable = true;
+    }
+
+    void Start() {
+        deathSound = DeathSound.Instance;
         audioSource = GetComponent<AudioSource>();
-		rb = GetComponent<Rigidbody>();
 		objectPooler = ObjectPooler.Instance;
-        rb.AddForce(transform.forward * force, ForceMode.Impulse);
 	}
 
     void OnTriggerEnter(Collider other){
 		if (other.tag != "Player" && other.tag != "NPC" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup") {
-            audioSource.PlayOneShot(audioShotHit);
+            deathSound.PlaySound(transform.position, audioShotHit);
             rb.velocity = Vector3.zero;
 			rb.useGravity = false;
-			objectPooler.ReturnObjectToPool ("Arrow", gameObject);
+			objectPooler.ReturnObjectToPool("Arrow", gameObject);
 		}
 	}
+
+    private void OnEnable() {
+        if(!firstEnable) {
+            rb.AddForce(transform.forward * force, ForceMode.Impulse);
+        }
+        else {
+            firstEnable = false;
+        }
+    }
 
 }

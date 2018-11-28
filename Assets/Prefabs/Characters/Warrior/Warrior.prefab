@@ -1219,7 +1219,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1342,14 +1342,14 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   partyNumber: 0
   followDistance: 2
-  audioDamage: {fileID: 0}
-  audioDeath: {fileID: 0}
-  audioExplosion: {fileID: 0}
-  audioPickUp: {fileID: 0}
+  audioDamage: {fileID: 8300000, guid: 58ca74ac395df954b8134da9c6eb6356, type: 3}
+  audioDeath: {fileID: 8300000, guid: e8d65ccc54bf934489d641aead268808, type: 3}
+  audioExplosion: {fileID: 8300000, guid: 36447587426a4f74da0075985c78a9a1, type: 3}
+  audioPickUp: {fileID: 8300000, guid: 74625111f1032dd4ca65adf2bca57d83, type: 3}
   Guarded: 0
-  audiohit: {fileID: 0}
-  audioWoosh: {fileID: 0}
-  audioShield: {fileID: 0}
+  audiohit: {fileID: 8300000, guid: 5eee377829321e544a3f8e6c86791b83, type: 3}
+  audioWoosh: {fileID: 8300000, guid: a4c9e8db41c76174f9e0c1a485c961c1, type: 3}
+  audioShield: {fileID: 8300000, guid: 8ee0c107191099c43a8198c2c8bc9ee6, type: 3}
   audioSourceWarrior: {fileID: 0}
 --- !u!114 &114597800615159232
 MonoBehaviour:

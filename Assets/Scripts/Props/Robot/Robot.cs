@@ -79,12 +79,6 @@ public class Robot : Enemy {
     protected override void Move() {
         if (tracked && !isSteping && !isLasering) {
             animator.SetFloat("Speed", 1);
-            if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled) {
-                agent.SetDestination(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-            }
-            else {
-                transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-            }
         }
         if (!tracked) {
             animator.SetFloat("Speed", 0);
@@ -141,10 +135,6 @@ public class Robot : Enemy {
         animator.SetTrigger("Step");
         movementSpeed = 0f;
         audioSource.PlayOneShot(audioLeg);
-        if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
-        {
-            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
-        }
         //esperar el pisoton
         yield return new WaitForSeconds(1.2f);
         //poner animacion idle
@@ -163,10 +153,6 @@ public class Robot : Enemy {
         //poner velocidad
         animator.SetFloat("Speed", 1);
         movementSpeed = originalMovementSpeed;
-        if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
-        {
-            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = originalMovementSpeed;
-        }
         isSteping = false;
     }
     
@@ -176,10 +162,6 @@ public class Robot : Enemy {
         animator.SetTrigger("LaserOn");
         audioSource.PlayOneShot(audioLaser);
         movementSpeed = 0f;
-        if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
-        {
-            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
-        }
         //esperar la cabecita
         yield return new WaitForSeconds(1f);
         //activar el laser
@@ -191,10 +173,6 @@ public class Robot : Enemy {
         //poner velocidad
         animator.SetTrigger("LaserOff");
         movementSpeed = originalMovementSpeed;
-        if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
-        {
-            gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = originalMovementSpeed;
-        }
         isLasering = false;
         redEyeRight.transform.localScale = Vector3.zero;
         redEyeLeft.transform.localScale = Vector3.zero;

@@ -28,6 +28,7 @@ public class Spell : PooledObjectBehavior {
     Vector3 spelltInitialScale;
     float scale;
 
+    DeathSound deathSound;
     AudioSource audioSource;
     [SerializeField]
     AudioClip audioFireExplosion;
@@ -35,6 +36,7 @@ public class Spell : PooledObjectBehavior {
     override protected void Awake() {
         audioSource = GetComponent<AudioSource>();
         speelRigidBody = GetComponent<Rigidbody>();
+        deathSound = DeathSound.Instance;
     }
     
     override protected void Start() {
@@ -60,7 +62,7 @@ public class Spell : PooledObjectBehavior {
     
     private void OnTriggerEnter(Collider other) {
         if (other.tag != "Player" && other.tag != "NPC" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup") {
-            audioSource.PlayOneShot(audioFireExplosion);
+            deathSound.PlaySound(transform.position, audioFireExplosion);
             collide = true;
             speelRigidBody.velocity = Vector3.zero;
             objectPooler.GetObjectFromPool("SpellDissolve", lastPosition, transform.rotation, null);

@@ -167,21 +167,12 @@ public abstract class Character3D : MonoBehaviour {
         else if (other.tag == "Ball")
         {
             RefreshHealth(-other.GetComponent<CannonBall>().AttackValue);
+            audioSource.PlayOneShot(audioDamage);
         }
         else if (other.tag == "NPC") {
             print(other.name);
             other.gameObject.SetActive(false);
             talkSystem.ShowDialog(int.Parse(other.name.Split('_')[2]) - 1);
-            /*
-            switch (other.name) {
-                case "NPC_trigger_1": talkSystem.ShowDialog(0); break;
-                case "NPC_trigger_2": talkSystem.ShowDialog(1); break;
-                case "NPC_trigger_3": talkSystem.ShowDialog(2); break;
-                case "NPC_trigger_4": talkSystem.ShowDialog(3); break;
-                case "NPC_trigger_5": talkSystem.ShowDialog(4); break;
-                case "NPC_trigger_6": talkSystem.ShowDialog(5); break;
-            }
-            */
         }
         /*else if (other.tag == "Damage") {
             RefreshHealth(-100f);
@@ -201,8 +192,8 @@ public abstract class Character3D : MonoBehaviour {
         }
         if (healthValue <= 0)
         {
-            audioSource.PlayOneShot(audioDeath);
-            audioSource.PlayOneShot(audioExplosion);
+            deathSound.PlaySound(transform.position, audioDeath);
+            deathSound.PlaySound(transform.position, audioExplosion);
             PartyManager.DeletePartyMember(gameObject);
             objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
             gameObject.SetActive(false);
