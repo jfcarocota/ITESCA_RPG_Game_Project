@@ -39,11 +39,11 @@ public class Enemy : Character3D {
             Knockback();
         }
         else if (other.tag == "Arrow") {
-            RefreshHealth(-40f);
+            RefreshHealth(-50f);
             Knockback();
         }
         else if (other.tag == "Damage") {
-            RefreshHealth(-40f);
+            RefreshHealth(-30f);
             Knockback();
         }
         if (healthValue <= 0) {
