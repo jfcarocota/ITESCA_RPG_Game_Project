@@ -8,11 +8,20 @@ public class Sword : MonoBehaviour {
 
     void Start()
     {
-        father = this.transform.root.gameObject.GetComponent<WarriorMan>();
+        father = this.transform.parent.parent.GetComponent<WarriorMan>();
+        
     }
 
-    private void OnCollisionEnter(Collision collision)
+   
+    private void OnTriggerEnter(Collider other)
     {
-        father.audioSourceWarrior.PlayOneShot(father.audioWoosh);
+        if (other.tag != "Player" && other.tag != "NPC" && other.tag != "Damage" && other.tag != "Guard" && other.tag != "Arrows" && other.tag != "HealthPickup" && other.tag != "ManaPickup" && other.tag != "Music")
+        {
+            
+            father.audioSourceWarrior.PlayOneShot(father.audiohit);
+            father.SetCollidersStatus(false, "Sword");
+            print("Sword: " + other.tag);
+
+        }
     }
 }

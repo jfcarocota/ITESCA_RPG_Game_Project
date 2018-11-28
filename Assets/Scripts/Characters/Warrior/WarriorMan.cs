@@ -24,6 +24,7 @@ public class WarriorMan : Character3D
 
     [HideInInspector]
     public AudioSource audioSourceWarrior;
+    
 
 
     override protected void Start()
@@ -32,6 +33,9 @@ public class WarriorMan : Character3D
         
         base.Start();
         audioSourceWarrior = audioSource;
+        Debug.Log("Warrior Man audio source: "+audioSource);
+        Debug.Log("Warrior Man audio source: " + audiohit);
+        oldMovementSpeed = movementSpeed;
     }
 
     protected override void Attack()
@@ -73,12 +77,8 @@ public class WarriorMan : Character3D
 
     protected override void Move()
     {
-        if(!Guarded)
-        { base.Move();
-        }
-        
-        animator.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));
-        
+      base.Move();
+      animator.SetFloat("Velocity", Mathf.Abs(Controllers.Axis.magnitude));  
     }
 
     protected override void Guard()
@@ -90,32 +90,16 @@ public class WarriorMan : Character3D
             animator.SetBool("Guard",true);
             Guarded = true;
             //rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ |  RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
-
+            movementSpeed = 0;
         }
-        else if (Controllers.GetFire(2, 2))
+        if (Controllers.GetFire(2, 2))
         {
-            cooldown = true;
-            if (currentTime > shieldTime) {
-                animator.SetBool("Guard", false);
-                Guarded = false;
-                currentTime = 0;
-            }
+            animator.SetBool("Guard", false);
+            Guarded = false;
+            currentTime = 0;
+            movementSpeed = oldMovementSpeed;
         }
-
-        if (cooldown)
-        {
-            currentTime += Time.deltaTime;
-        }
-
-        if (!animator.GetBool("Guard") && cooldown)
-        {
-            if(currentTime > shieldTime)
-            {
-                currentTime = 0;
-                cooldown = false;
-                //rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionY;
-            }
-        }
+        
 
     }
     protected override void OnTriggerEnter(Collider other)
@@ -139,7 +123,12 @@ public class WarriorMan : Character3D
 
     override protected void OnCollisionEnter(Collision other)
     {
-        base.OnCollisionEnter(other);
+        if(!Guarded && other.gameObject.tag != "Skelly")
+        {
+            base.OnCollisionEnter(other);
+        }
+
+        
         //Debug.Log("Collision: " + other.collider.name + " Padre: " + other.transform.root.name + " Objeto tocado: " + this.name);
     }
     public void SetCollidersStatus(bool active, string Collider)
