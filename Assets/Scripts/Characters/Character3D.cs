@@ -211,6 +211,10 @@ public abstract class Character3D : MonoBehaviour {
             deathSound.PlaySound(transform.position, audioDeath);
             deathSound.PlaySound(transform.position, audioExplosion);
             PartyManager.DeletePartyMember(gameObject);
+            if(PartyManager.members.Length == 0)
+            {
+                deathSound.PlayFailure(transform.position);
+            }
             objectPooler.GetObjectFromPool("EnemyExplosion", transform.position, transform.rotation, null);
             gameObject.SetActive(false);
         }
