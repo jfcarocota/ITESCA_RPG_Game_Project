@@ -50,7 +50,6 @@ public class Slime : Enemy {
             }
         }
         else if (isInAir && collision.gameObject.tag == "Floor") {
-            print("toco el piso");
             touchGround = true;
             isInAir = false;
         }
@@ -58,14 +57,16 @@ public class Slime : Enemy {
 
     protected override void OnTriggerEnter(Collider other) {
         base.OnTriggerEnter(other);
-        if (other.tag == "Spell") {
-            audioSource.PlayOneShot(audioDamageSlime);
-        }
-        else if (other.tag == "Arrow") {
-            audioSource.PlayOneShot(audioDamageSlime);
-        }
-        else if (other.tag == "Damage") {
-            audioSource.PlayOneShot(audioDamageSlime);
+        if (gameObject.activeSelf) {
+            if (other.tag == "Spell") {
+                audioSource.PlayOneShot(audioDamageSlime);
+            }
+            else if (other.tag == "Arrow") {
+                audioSource.PlayOneShot(audioDamageSlime);
+            }
+            else if (other.tag == "Damage") {
+                audioSource.PlayOneShot(audioDamageSlime);
+            }
         }
     }
 

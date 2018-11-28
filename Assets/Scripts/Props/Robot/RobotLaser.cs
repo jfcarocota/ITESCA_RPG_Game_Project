@@ -25,7 +25,7 @@ public class RobotLaser : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Quaternion rotation = Quaternion.LookRotation(playerTransform.position - transform.position);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, .4f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, .5f);
 
         laser.SetPosition(0, transform.position);
         laser.SetPosition(1, transform.position + transform.forward * 15);

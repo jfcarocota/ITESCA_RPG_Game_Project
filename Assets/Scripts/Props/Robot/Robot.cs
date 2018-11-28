@@ -62,14 +62,16 @@ public class Robot : Enemy {
 
     protected override void OnTriggerEnter(Collider other) {
         base.OnTriggerEnter(other);
-        if (other.tag == "Spell") {
-            audioSource.PlayOneShot(audioDamageRobot);
-        }
-        else if (other.tag == "Arrow") {
-            audioSource.PlayOneShot(audioDamageRobot);
-        }
-        else if (other.tag == "Damage") {
-            audioSource.PlayOneShot(audioDamageRobot);
+        if (gameObject.activeSelf) {
+            if (other.tag == "Spell") {
+                audioSource.PlayOneShot(audioDamageRobot);
+            }
+            else if (other.tag == "Arrow") {
+                audioSource.PlayOneShot(audioDamageRobot);
+            }
+            else if (other.tag == "Damage") {
+                audioSource.PlayOneShot(audioDamageRobot);
+            }
         }
         if (healthValue <= 0) {
             deathSound.PlaySound(transform.position, audioDeathRobot);
@@ -79,6 +81,7 @@ public class Robot : Enemy {
     protected override void Move() {
         if (tracked && !isSteping && !isLasering) {
             animator.SetFloat("Speed", 1);
+            transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
         }
         if (!tracked) {
             animator.SetFloat("Speed", 0);
@@ -179,6 +182,7 @@ public class Robot : Enemy {
     }
 
     protected override void OnDeath() {
+        music.PlayMusic(1);
         beforeRobot.SetActive(false);
         afterRobot.SetActive(true);
         base.OnDeath();

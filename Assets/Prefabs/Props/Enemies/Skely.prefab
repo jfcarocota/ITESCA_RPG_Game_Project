@@ -3318,7 +3318,7 @@ MonoBehaviour:
   followDistance: 0
   audioDamage: {fileID: 8300000, guid: 387d5ff17639e3944989f020ee7a2663, type: 3}
   audioDeath: {fileID: 0}
-  audioExplosion: {fileID: 0}
+  audioExplosion: {fileID: 8300000, guid: 36447587426a4f74da0075985c78a9a1, type: 3}
   audioPickUp: {fileID: 0}
   startDamage: 0
   trackDistance: 20

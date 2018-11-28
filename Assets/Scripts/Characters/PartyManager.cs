@@ -94,8 +94,9 @@ public class PartyManager: MonoBehaviour {
         members = partyMembers.ToArray();
         if (members.Length > 0)
             vCam.Follow = vCam.LookAt = members[0].transform;
-        else
+        else {
             MenuController.deadScreen = true;
+        }
     }
 
     IEnumerator WaitToSwap()

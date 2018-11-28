@@ -12,6 +12,8 @@ public class DeathSound : MonoBehaviour {
     #endregion
 
     AudioSource audioSource;
+    [SerializeField]
+    AudioClip audioVictory, audioFailure, audioMega;
 
     // Use this for initialization
     void Start () {
@@ -22,4 +24,20 @@ public class DeathSound : MonoBehaviour {
         transform.position = pos;
         audioSource.PlayOneShot(clip);
     }
+
+    public void PlayVictory(Vector3 pos) {
+        transform.position = pos;
+        audioSource.PlayOneShot(audioVictory);
+    }
+
+    public void PlayFailure(Vector3 pos) {
+        transform.position = pos;
+        audioSource.PlayOneShot(audioFailure);
+    }
+
+    public void PlayMega(Vector3 pos) {
+        transform.position = pos;
+        audioSource.PlayOneShot(audioMega);
+    }
+
 }

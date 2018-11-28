@@ -30,7 +30,10 @@ namespace GameCore {
 
             bool win;
 
+            DeathSound deathSound;
+
             void Start() {
+                deathSound = DeathSound.Instance;
                 win = false;
                 dialogs = new List<string>();
                 dialogs.Add("02El Brayan Daniel:\nTa cabrón que el único ****** baño del pueblo este atrás de tu casa >:(|"
@@ -81,6 +84,7 @@ namespace GameCore {
             void CloseDialog() {
                 dialogBox.SetActive(false);
                 if (win) {
+                    deathSound.PlayVictory(PartyManager.members[0].transform.position);
                     MenuController.gameCleared = true;
                     MenuController.deadScreen = true;
                 }

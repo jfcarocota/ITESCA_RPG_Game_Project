@@ -41,6 +41,7 @@ public abstract class Character3D : MonoBehaviour {
     protected ObjectPooler objectPooler;
     private TalkSystem talkSystem;
     protected DeathSound deathSound;
+    protected Music music;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -62,6 +63,7 @@ public abstract class Character3D : MonoBehaviour {
     // Use this for initialization
     protected virtual void Start () {
         deathSound = DeathSound.Instance;
+        music = Music.Instance;
         objectPooler = ObjectPooler.Instance;
         talkSystem = TalkSystem.Instance;
         rb = GetComponent<Rigidbody>();
@@ -170,9 +172,17 @@ public abstract class Character3D : MonoBehaviour {
             audioSource.PlayOneShot(audioDamage);
         }
         else if (other.tag == "NPC") {
-            print(other.name);
             other.gameObject.SetActive(false);
             talkSystem.ShowDialog(int.Parse(other.name.Split('_')[2]) - 1);
+        }
+        else if (other.tag == "Music") {
+            other.gameObject.SetActive(false);
+            switch (other.name) {
+                case "Music_1": music.PlayMusic(1); break;
+                case "Music_2": music.PlayMusic(2); break;
+                case "Music_3": music.PlayMusic(3); break;
+                case "Music_4": deathSound.PlayMega(transform.position); break;
+            }
         }
         /*else if (other.tag == "Damage") {
             RefreshHealth(-100f);
