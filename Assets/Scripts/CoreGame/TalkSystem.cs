@@ -86,8 +86,8 @@ namespace GameCore {
                 }
                 else {
                     MenuController.isPaused = false;
-                    Time.timeScale = 1f;
                 }
+                Time.timeScale = 1f;
             }
 
         }
