@@ -2754,7 +2754,7 @@ MonoBehaviour:
   knockbackForce: 0
   ballSpawner: {fileID: 1888191625320898}
   Skelly: {fileID: 1568585194135660}
-  timeshoot: 3
+  timeshoot: 2.5
   AttackPlayer: 1
   audioA: {fileID: 8300000, guid: deef551540aec6e4290dd5de1d3b935b, type: 3}
   audioDamageSkeley: {fileID: 8300000, guid: 387d5ff17639e3944989f020ee7a2663, type: 3}
