@@ -45,10 +45,12 @@ public class Slime : Enemy {
             if (canAttackAgain) {
                 canAttackAgain = false;
                 collision.gameObject.GetComponent<Character3D>().RefreshHealth(-attackValue);
-                StartCoroutine(MakeCanAttackAgain());
+                if(gameObject.activeSelf)
+                    StartCoroutine(MakeCanAttackAgain());
             }
         }
         else if (isInAir && collision.gameObject.tag == "Floor") {
+            print("toco el piso");
             touchGround = true;
             isInAir = false;
         }

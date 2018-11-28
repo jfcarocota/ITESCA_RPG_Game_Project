@@ -149,7 +149,7 @@ public abstract class Character3D : MonoBehaviour {
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ManaPickup") {
+        if (other.tag == "ManaPickup" && usesMana) {
             RefreshMana(other.GetComponent<PickupValue>().value);
             Destroy(other.transform.parent.gameObject);
             audioSource.PlayOneShot(audioPickUp);
