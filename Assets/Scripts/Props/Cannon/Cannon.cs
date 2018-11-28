@@ -45,19 +45,18 @@ public class Cannon : Enemy
     protected override void Attack()
     {
         base.Attack();
-        if (Attacking && AttackPlayer && tracked)
-        {
+        if (Attacking && AttackPlayer && tracked) {
+            Attacking = false;
             StartCoroutine(Shoot());
-            audioSource.PlayOneShot(audioA);
-            objectPooler.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
-            objectPooler.GetObjectFromPool("SmokeRing", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
-            Attacking=false;
         }
     }
     
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(timeshoot);
+        audioSource.PlayOneShot(audioA);
+        objectPooler.GetObjectFromPool("CannonBall", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
+        objectPooler.GetObjectFromPool("SmokeRing", ballSpawner.transform.position, ballSpawner.transform.rotation, null);
         Attacking = true;
     }
 
