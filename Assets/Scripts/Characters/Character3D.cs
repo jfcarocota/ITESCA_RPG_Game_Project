@@ -40,6 +40,7 @@ public abstract class Character3D : MonoBehaviour {
 
     protected ObjectPooler objectPooler;
     private TalkSystem talkSystem;
+    protected DeathSound deathSound;
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -60,6 +61,7 @@ public abstract class Character3D : MonoBehaviour {
 
     // Use this for initialization
     protected virtual void Start () {
+        deathSound = DeathSound.Instance;
         objectPooler = ObjectPooler.Instance;
         talkSystem = TalkSystem.Instance;
         rb = GetComponent<Rigidbody>();

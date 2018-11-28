@@ -60,6 +60,22 @@ public class Robot : Enemy {
         StartCoroutine(CheckLeaderGO());
     }
 
+    protected override void OnTriggerEnter(Collider other) {
+        base.OnTriggerEnter(other);
+        if (other.tag == "Spell") {
+            audioSource.PlayOneShot(audioDamageRobot);
+        }
+        else if (other.tag == "Arrow") {
+            audioSource.PlayOneShot(audioDamageRobot);
+        }
+        else if (other.tag == "Damage") {
+            audioSource.PlayOneShot(audioDamageRobot);
+        }
+        if (healthValue <= 0) {
+            deathSound.PlaySound(transform.position, audioDeathRobot);
+        }
+    }
+
     protected override void Move() {
         if (tracked && !isSteping && !isLasering) {
             animator.SetFloat("Speed", 1);
@@ -124,6 +140,7 @@ public class Robot : Enemy {
         isSteping = true;
         animator.SetTrigger("Step");
         movementSpeed = 0f;
+        audioSource.PlayOneShot(audioLeg);
         if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
         {
             gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
@@ -133,6 +150,7 @@ public class Robot : Enemy {
         //poner animacion idle
         animator.SetFloat("Speed", 0);
         //activar la hitbox y animacion del polvo
+        audioSource.PlayOneShot(audioStep);
         foot.SetActive(true);
         stepParticlesOn = true;
         //esperar parado un ratin
@@ -156,6 +174,7 @@ public class Robot : Enemy {
         //activar animacion y quitar velocidad
         isLasering = true;
         animator.SetTrigger("LaserOn");
+        audioSource.PlayOneShot(audioLaser);
         movementSpeed = 0f;
         if (gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled)
         {

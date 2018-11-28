@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4169365228286544}
   m_Layer: 0
   m_Name: ArrowPickup
-  m_TagString: Arrows
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114414989719491012}
   m_Layer: 0
   m_Name: Pickup Holder
-  m_TagString: HealthPickup
+  m_TagString: Arrows
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
